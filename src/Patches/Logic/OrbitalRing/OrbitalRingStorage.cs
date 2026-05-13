@@ -317,7 +317,8 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
                                     if (!storageItem.ContainsKey(itemId)) {
                                         storageItem[itemId] = new int[] { 0, 0 };
                                     }
-                                    if (storageItem[itemId][0] < OrbitalRingStorageMax) {
+                                    int StorageMax = CheckItemStorageMax(itemId);
+                                    if (storageItem[itemId][0] < StorageMax) {
                                         count = assemblerComponent.produced[i];
                                         storageItem[itemId][0] += count;
                                         assemblerComponent.produced[i] = 0;
@@ -370,6 +371,11 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
                         if (pair.OrbitalCorePoolId == __instance.id) {
                             if (__instance.bulletCount == 0) {
                                 ref Dictionary<int, int[]> storageItem = ref planetOrbitalRingData.Rings[ringId].orbitalRingStorage.storageItem;
+                                if (__instance.bulletId == 1803 && storageItem.ContainsKey(1804)) {
+                                    __instance.bulletId = 1804;
+                                } else if (__instance.bulletId == 1804 && storageItem.ContainsKey(1803)) {
+                                    __instance.bulletId = 1803;
+                                }
                                 lock (storageItem) {
                                     if (storageItem.ContainsKey(__instance.bulletId)) {
                                         int count = (storageItem[__instance.bulletId][0] >= 40) ? 40 : storageItem[__instance.bulletId][0];

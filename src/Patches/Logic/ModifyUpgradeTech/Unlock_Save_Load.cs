@@ -675,10 +675,10 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
                     techProto = LDB.techs.Select(1952);
                     techProto.IsHiddenTech = false;
                     break;
-                case 1952:
-                    techProto = LDB.techs.Select(1960);
-                    techProto.IsHiddenTech = false; // 解除宇宙的齿轮的隐藏状态，3阶
-                    break;
+                //case 1952:
+                //    techProto = LDB.techs.Select(1960);
+                //    techProto.IsHiddenTech = false; // 解除宇宙的齿轮的隐藏状态，3阶
+                //    break;
                 case 1960:
                     techProto = LDB.techs.Select(1814);
                     techProto.IsHiddenTech = false;
@@ -916,6 +916,8 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
                 recipeProto = LDB.recipes.Select(74);
                 recipeProto.ResultCounts[0] = AntiMatterOutCounts;
                 recipeProto.ResultCounts[1] = AntiMatterOutCounts;
+                RecipeProto.recipeExecuteData[74].productCounts[0] = AntiMatterOutCounts;
+                RecipeProto.recipeExecuteData[74].productCounts[1] = AntiMatterOutCounts;
 
                 for (int i = 0; i < 3; i++) {
                     UniverseObserveBuilding[i] = r.ReadInt32();

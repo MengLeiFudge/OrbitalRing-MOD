@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
 using static ProjectOrbitalRing.ProjectOrbitalRing;
 
 namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
@@ -121,15 +122,33 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
         }
 
         [HarmonyPrefix]
-        [HarmonyPatch(typeof(DysonNode), nameof(DysonNode.OrderConstructCp))]
-        public static bool OrderConstructCpPatch(DysonNode __instance)
+        [HarmonyPatch(typeof(DysonSphereLayer), nameof(DysonSphereLayer.GameTick))]
+        public static bool DysonSphereLayer_GameTick_Patch(DysonSphereLayer __instance)
         {
-            for (int i = 0; i < SecondLevelLayer.Length; i++) {
-                if (SecondLevelLayer[i] != 0 && SecondLevelLayer[i] == __instance.layerId) {
-                    return false; // 禁止吸附
+            if (__instance.dysonSphere.starData.type == EStarType.BlackHole) {
+                bool flag = false;
+                for (int i = 0; i < SecondLevelLayer.Length; i++) {
+                    if (SecondLevelLayer[i] != 0 && SecondLevelLayer[i] == __instance.id) {
+                        flag = true;
+                        break;
+                    }
+                }
+                if (flag) {
+                    __instance.UpdateOrbitRotation();
+                    __instance.currentAngle += __instance.orbitAngularSpeed * 0.016666668f;
+                    if (__instance.currentAngle > 360f) {
+                        __instance.currentAngle -= 360f;
+                    }
+                    if (__instance.currentAngle < 0f) {
+                        __instance.currentAngle += 360f;
+                    }
+                    __instance.currentRotation = __instance.orbitRotation * Quaternion.Euler(0f, -__instance.currentAngle, 0f);
+                    __instance.currentRotation = __instance.currentRotation.normalized;
+                    __instance.nextRotation = __instance.orbitRotation * Quaternion.Euler(0f, -__instance.currentAngle - __instance.orbitAngularSpeed * 0.016666668f, 0f);
+                    return false; // 禁止原方法执行,禁止吸附
                 }
             }
-            return true;
+            return true; // 允许原方法执行
         }
 
         internal static void Export(BinaryWriter w)
