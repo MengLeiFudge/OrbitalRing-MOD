@@ -422,7 +422,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
             techProto.HashNeeded = 450;
 
             techProto = LDB.techs.Select(ProtoID.T驱动引擎2);
-            techProto.PreTechsImplicit = new int[] { 1917 }; // 驱动引擎2前置速生林
+            techProto.PreTechsImplicit = new int[] { 1917, 1113 }; // 驱动引擎2前置速生林，推进器
             techProto.Items = new int[] { 1405 };
             techProto.ItemPoints = new int[] { 150 };
             techProto.HashNeeded = 600;

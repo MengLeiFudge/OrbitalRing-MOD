@@ -9,6 +9,8 @@ using UnityEngine;
 using xiaoye97;
 using PluginInfo = BepInEx.PluginInfo;
 using UnityEngine.UI;
+using ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine;
+using ProjectOrbitalRing.Utils;
 
 // ReSharper disable InconsistentNaming
 // ReSharper disable LoopCanBePartlyConvertedToQuery
@@ -262,20 +264,19 @@ namespace ProjectOrbitalRing.Compatibility
 
             if (StarMegaStructureType[curDysonSphere.starData.id - 1] == 0) //如果是数学率引擎
             {
-                if (curDysonSphere.starData.type == EStarType.BlackHole)
-                {
+                if (curDysonSphere.starData.type == EStarType.BlackHole) {
                     long DysonEnergy = (curDysonSphere.energyGenCurrentTick - curDysonSphere.energyReqCurrentTick);
-                    if (!GameMain.history.TechUnlocked(1802))
-                    {
-                        RightMaxPowGenValueText.text = Capacity2Str(DysonEnergy) + " ?";
-                    }
-                    else if (!GameMain.history.TechUnlocked(1952))
-                    {
+                    if (!GameMain.history.TechUnlocked(1802)) {
+                        RightMaxPowGenValueText.text = Capacity2Str(DysonEnergy) + "?";
+                    } else if (!GameMain.history.TechUnlocked(1952)) {
                         RightMaxPowGenValueText.text = Capacity2Str(DysonEnergy) + " g";
-                    }
-                    else
-                    {
-                        RightMaxPowGenValueText.text = Capacity2Str(DysonEnergy / 2000) + "休谟";
+                    } else if (!GameMain.history.TechUnlocked(1960)) {
+                        RightMaxPowGenValueText.text = Capacity2Str(DysonEnergy / 10000) + "休谟".TranslateFromJson();
+                    } else {
+                        long ThirdLevelEnergy = DysonEnergy - EnergyCalculate.SecondLevelEnergy;
+                        double coefficient = ThirdLevelEnergy / EnergyCalculate.ThirdLevelRatio;
+                        RightMaxPowGenValueText.text = Capacity2Str((long)((EnergyCalculate.SecondLevelEnergy / 10000) * coefficient)) + "休谟".TranslateFromJson();
+                        //RightMaxPowGenValueText.text = coefficient.ToString() + "休谟";
                     }
                 }
             }

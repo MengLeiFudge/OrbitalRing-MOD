@@ -31,6 +31,11 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
                     if (pair.OrbitalCorePoolId == __instance.id && pair.elevatorPoolId != -1) {
                         var storage = ring.GetElevatorStorage(j);
                         for (int k = 0; k < storage.Length; k++) {
+                            if (__instance.bulletCount == 0 && __instance.bulletId == 1803 && storage[k].itemId == 1804) {
+                                __instance.bulletId = 1804;
+                            } else if (__instance.bulletCount == 0 && __instance.bulletId == 1804 && storage[k].itemId == 1803) {
+                                __instance.bulletId = 1803;
+                            }
                             if (storage[k].itemId == __instance.bulletId && storage[k].count >= 1) {
                                 __instance.bulletCount += 1;
                                 int inc = split_inc(ref storage[k].count, ref storage[k].inc, 1);
