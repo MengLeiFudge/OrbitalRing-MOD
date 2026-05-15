@@ -9,6 +9,19 @@ using UnityEngine.UI.Youthcat;
 
 namespace ProjectOrbitalRing.Patches.UI {
     public static class IconSetPatches {
+        private static void AddIconMapping(List<TextIconMapping.IconConfig> list, string name, string iconTag,
+            uint iconIndex) {
+            if (string.IsNullOrEmpty(iconTag))
+                return;
+
+            int x = (int)(iconIndex % 25U);
+            int y = (int)(iconIndex / 25U);
+            list.Add(new TextIconMapping.IconConfig(name, iconTag,
+                new Vector2((float)x / 25f, (float)y / 25f),
+                new Vector2((float)(x + 1) / 25f, (float)(y + 1) / 25f),
+                new Vector2(24f, 24f), true));
+        }
+
         // [HarmonyPatch(typeof(IconSet), nameof(IconSet.Create))]
         // [HarmonyTranspiler]
         // public static IEnumerable<CodeInstruction> IconSet_Create_Transpiler(IEnumerable<CodeInstruction> instructions)
@@ -86,6 +99,7 @@ namespace ProjectOrbitalRing.Patches.UI {
                         }
                         __instance.spriteIndexMap[iconSprite] = num2;
                     }
+                    AddIconMapping(list, dataArray1[index].name, dataArray1[index].IconTag, num2);
                 }
                 __instance.itemIconIndex[dataArray1[index].ID] = num2;
                 __instance.signalIconIndex[dataArray1[index].ID] = num2;
@@ -117,6 +131,7 @@ namespace ProjectOrbitalRing.Patches.UI {
                         }
                         __instance.spriteIndexMap[iconSprite] = num5;
                     }
+                    AddIconMapping(list, dataArray2[index].name, dataArray2[index].IconTag, num5);
                 }
                 __instance.veinIconIndex[dataArray2[index].ID] = num5;
                 __instance.signalIconIndex[dataArray2[index].ID + 12000] = num5;
@@ -143,6 +158,7 @@ namespace ProjectOrbitalRing.Patches.UI {
                         }
                         __instance.spriteIndexMap[iconSprite] = num8;
                     }
+                    AddIconMapping(list, dataArray3[index].name, dataArray3[index].IconTag, num8);
                 }
                 __instance.recipeIconIndex[dataArray3[index].ID] = num8;
                 __instance.signalIconIndex[dataArray3[index].ID + 20000] = num8;
@@ -184,12 +200,7 @@ namespace ProjectOrbitalRing.Patches.UI {
                         }
                         __instance.spriteIndexMap[iconSprite] = num11;
                     }
-                    if (!string.IsNullOrEmpty(dataArray4[index].IconTag)) {
-                        int num24 = (int)(num11 % 25U);
-                        int num25 = (int)(num11 / 25U);
-                        TextIconMapping.IconConfig iconConfig4 = new TextIconMapping.IconConfig(dataArray4[index].name, dataArray4[index].IconTag, new Vector2((float)num24 / 25f, (float)num25 / 25f), new Vector2((float)(num24 + 1) / 25f, (float)(num25 + 1) / 25f), new Vector2(24f, 24f), true);
-                        list.Add(iconConfig4);
-                    }
+                    AddIconMapping(list, dataArray4[index].name, dataArray4[index].IconTag, num11);
                 }
                 __instance.techIconIndex[dataArray4[index].ID] = num11;
                 __instance.signalIconIndex[dataArray4[index].ID + 40000] = num11;
@@ -216,6 +227,7 @@ namespace ProjectOrbitalRing.Patches.UI {
                         }
                         __instance.spriteIndexMap[iconSprite] = num14;
                     }
+                    AddIconMapping(list, dataArray5[index].name, dataArray5[index].IconTag, num14);
                 }
                 __instance.signalIconIndex[dataArray5[index].ID] = num14;
             }
