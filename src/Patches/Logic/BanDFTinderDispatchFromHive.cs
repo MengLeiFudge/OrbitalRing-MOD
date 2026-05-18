@@ -12,10 +12,11 @@ namespace ProjectOrbitalRing.Patches.Logic
     internal class BanDFTinderDispatchFromHive
     {
         public static HashSet<int> DFTinderShouldNotDispatchStarId = new HashSet<int>();
-        private static bool CheckStarIdCanDspatch(int starIndex)
+        private static bool CheckStarIdCanDspatch(ref int starIndex)
         {
             int starId = starIndex + 1;
             if (DFTinderShouldNotDispatchStarId.Contains(starId)) {
+                starIndex = -1;
                 return false;
             }
             return true;
@@ -34,7 +35,7 @@ namespace ProjectOrbitalRing.Patches.Logic
             object num15 = matcher.Advance(5).Operand;
 
             matcher.Advance(1).InsertAndAdvance(
-                new CodeInstruction(OpCodes.Ldloc, num15),
+                new CodeInstruction(OpCodes.Ldloca, num15),
                 new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(BanDFTinderDispatchFromHive), nameof(CheckStarIdCanDspatch))),
                 new CodeInstruction(OpCodes.Brfalse, IL_023B)
             );

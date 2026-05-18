@@ -230,7 +230,8 @@
     <Compile Include="src\Patches\UI\FactoryModelPatches.cs" />
     <Compile Include="src\Patches\UI\FluidColorPatches.cs" />
     <Compile Include="src\Patches\UI\FuelRodPatches.cs" />
-    <Compile Include="src\Patches\UI\GridIndexExpandPatches.cs" />
+    <Compile Include="src\Patches\UI\GridIndexExpand\GridIndexExpandPatches.cs" />
+    <Compile Include="src\Patches\UI\GridIndexExpand\UISignalTagPickerPatches.cs" />
     <Compile Include="src\Patches\UI\HarmonyLogPatches.cs" />
     <Compile Include="src\Patches\UI\IconSetPatches.cs" />
     <Compile Include="src\Patches\UI\Module\UIAssemblerWindowPatch.cs" />
@@ -243,12 +244,12 @@
     <Compile Include="src\Patches\UI\ResearchLabPatches.cs" />
     <Compile Include="src\Patches\UI\U235RecipesResultCountFix.cs" />
     <Compile Include="src\Patches\UI\UIBuildMenuPatches.cs" />
-    <Compile Include="src\Patches\UI\UILootFilterPatches.cs" />
+    <Compile Include="src\Patches\UI\GridIndexExpand\UILootFilterPatches.cs" />
     <Compile Include="src\Patches\UI\UIMainMenuPatches.cs" />
     <Compile Include="src\Patches\UI\UIMonitorPatches.cs" />
     <Compile Include="src\Patches\UI\UIOptionWindowPatches.cs" />
     <Compile Include="src\Patches\UI\UIPowerGeneratorWindowPatches.cs" />
-    <Compile Include="src\Patches\UI\UISignalPickerPatches.cs" />
+    <Compile Include="src\Patches\UI\GridIndexExpand\UISignalPickerPatches.cs" />
     <Compile Include="src\Patches\UI\UITechNodePatches.cs" />
     <Compile Include="src\Patches\UI\UITutorialWindowPatches.cs" />
     <Compile Include="src\Patches\UI\UpdateLogoPatches.cs" />

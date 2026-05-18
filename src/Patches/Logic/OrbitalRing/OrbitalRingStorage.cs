@@ -395,16 +395,19 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
                     var pair = planetOrbitalRingData.Rings[ringId].GetPair(i);
                     if (pair.stationType == StationType.EjectorCore) {
                         if (pair.OrbitalCorePoolId == __instance.id) {
+                            ref Dictionary<int, int[]> storageItem = ref planetOrbitalRingData.Rings[ringId].orbitalRingStorage.storageItem;
                             if (__instance.bulletCount == 0) {
-                                ref Dictionary<int, int[]> storageItem = ref planetOrbitalRingData.Rings[ringId].orbitalRingStorage.storageItem;
                                 if (__instance.bulletId == 1803 && storageItem.ContainsKey(1804)) {
                                     __instance.bulletId = 1804;
                                 } else if (__instance.bulletId == 1804 && storageItem.ContainsKey(1803)) {
                                     __instance.bulletId = 1803;
                                 }
+                            }
+                            if (__instance.bulletCount < 10) {
+                                int reloadNum = 40 - __instance.bulletCount;
                                 lock (storageItem) {
                                     if (storageItem.ContainsKey(__instance.bulletId)) {
-                                        int count = (storageItem[__instance.bulletId][0] >= 40) ? 40 : storageItem[__instance.bulletId][0];
+                                        int count = (storageItem[__instance.bulletId][0] >= reloadNum) ? reloadNum : storageItem[__instance.bulletId][0];
                                         __instance.bulletCount += count;
                                         int inc = split_inc(ref storageItem[__instance.bulletId][0], ref storageItem[__instance.bulletId][1], count);
                                         __instance.bulletInc += inc;

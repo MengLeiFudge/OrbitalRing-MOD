@@ -24,22 +24,20 @@ namespace ProjectOrbitalRing.Patches.UI
             TabData[] allTabs = TabSystem.GetAllTabs();
             _tabs = new List<UITabButton>();
 
-            foreach (TabData tabData in allTabs)
-            {
+            foreach (TabData tabData in allTabs) {
                 if (tabData == null) continue;
 
                 GameObject gameObject = Object.Instantiate(TabSystem.GetTabPrefab(), __instance.pickerTrans, false);
-                ((RectTransform)gameObject.transform).anchoredPosition = new Vector2((tabData.tabIndex + 4) * 70 - 54, -75f);
+                ((RectTransform)gameObject.transform).anchoredPosition = new Vector2((tabData.tabIndex + 3) * 70 - 54, -75f);
                 UITabButton component = gameObject.GetComponent<UITabButton>();
                 Sprite newIcon = Resources.Load<Sprite>(tabData.tabIconPath);
-                component.Init(newIcon, tabData.tabName, tabData.tabIndex + 5, __instance.OnTypeButtonClick);
+                component.Init(newIcon, tabData.tabName, tabData.tabIndex + 6, __instance.OnTypeButtonClick);
                 _tabs.Add(component);
             }
 
-            Transform typeButton6Transform = __instance.typeButton6.transform;
-            __instance.typeButton7.transform.localPosition = typeButton6Transform.localPosition;
-            typeButton6Transform.localPosition = __instance.typeButton5.transform.localPosition;
             __instance.typeButton5.gameObject.SetActive(false);
+            __instance.typeButton6.gameObject.SetActive(false);
+            __instance.typeButton7.gameObject.SetActive(false);
         }
 
         [HarmonyPatch(typeof(UISignalPicker), nameof(UISignalPicker.OnTypeButtonClick))]
@@ -94,18 +92,17 @@ namespace ProjectOrbitalRing.Patches.UI
         //    }
         //}
 
-        //[HarmonyPatch(typeof(UIShowSignalTipExtension), nameof(UIShowSignalTipExtension.OnUpdate))]
-        //[HarmonyTranspiler]
-        //[HarmonyPriority(Priority.Last)]
-        //public static IEnumerable<CodeInstruction> UIShowSignalTipExtension_Transpiler(IEnumerable<CodeInstruction> instructions)
-        //{
-        //    foreach (CodeInstruction ci in instructions)
-        //    {
-        //        if (ci.opcode == OpCodes.Ldc_I4_S && (sbyte)ci.operand == 12) ci.operand = (sbyte)17;
+        [HarmonyPatch(typeof(UIShowSignalTipExtension), nameof(UIShowSignalTipExtension.OnUpdate))]
+        [HarmonyTranspiler]
+        [HarmonyPriority(Priority.Last)]
+        public static IEnumerable<CodeInstruction> UIShowSignalTipExtension_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            foreach (CodeInstruction ci in instructions) {
+                if (ci.opcode == OpCodes.Ldc_I4_S && (sbyte)ci.operand == 12) ci.operand = (sbyte)17;
 
-        //        yield return ci;
-        //    }
-        //}
+                yield return ci;
+            }
+        }
 
         //[HarmonyPatch(typeof(UISignalPicker), nameof(UISignalPicker.SetMaterialProps))]
         //[HarmonyTranspiler]
@@ -129,21 +126,19 @@ namespace ProjectOrbitalRing.Patches.UI
 
         [HarmonyPatch(typeof(UISignalPicker), nameof(UISignalPicker.RefreshIcons))]
         [HarmonyPostfix]
-        public static void RefreshIcons(UISignalPicker __instance, ref int ___currentType, ref uint[] ___indexArray,
-            ref int[] ___signalArray)
+        public static void RefreshIcons(UISignalPicker __instance)
         {
-            if (___currentType <= 7) return;
+            if (__instance.currentType <= 8) return;
 
             IconSet iconSet = GameMain.iconSet;
             ItemProto[] dataArray = LDB.items.dataArray;
 
-            foreach (ItemProto t in dataArray)
-            {
+            foreach (ItemProto t in dataArray) {
                 if (t.GridIndex < 1101) continue;
 
                 int num4 = t.GridIndex / 1000;
 
-                if (num4 != ___currentType - 5) continue;
+                if (num4 != __instance.currentType - 6) continue;
 
                 int num5 = (t.GridIndex - num4 * 1000) / 100 - 1;
                 int num6 = t.GridIndex % 100 - 1;
@@ -152,11 +147,11 @@ namespace ProjectOrbitalRing.Patches.UI
 
                 int index5 = num5 * 14 + num6;
 
-                if (index5 < 0 || index5 >= ___indexArray.Length) continue;
+                if (index5 < 0 || index5 >= __instance.indexArray.Length) continue;
 
                 int index6 = SignalProtoSet.SignalId(ESignalType.Item, t.ID);
-                ___indexArray[index5] = iconSet.signalIconIndex[index6];
-                ___signalArray[index5] = index6;
+                __instance.indexArray[index5] = iconSet.signalIconIndex[index6];
+                __instance.signalArray[index5] = index6;
             }
         }
     }

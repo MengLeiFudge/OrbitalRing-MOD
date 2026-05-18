@@ -181,6 +181,7 @@ namespace ProjectOrbitalRing.Utils
         public string Name { get; set; }
         public string Description { get; set; }
         public string IconPath { get; set; }
+        public string IconTag { get; set; }
         public int Type { get; set; }
         public int GridIndex { get; set; }
         public int Time { get; set; }
@@ -207,6 +208,7 @@ namespace ProjectOrbitalRing.Utils
                 Description = i.Description,
                 GridIndex = i.GridIndex,
                 IconPath = i.IconPath,
+                IconTag = i.IconTag,
                 NonProductive = i.NonProductive,
             };
 
@@ -227,6 +229,7 @@ namespace ProjectOrbitalRing.Utils
             proto.Description = Description;
             proto.GridIndex = GridIndex;
             proto.IconPath = IconPath;
+            proto.IconTag = IconTag;
             proto.NonProductive = NonProductive;
 
             return proto;

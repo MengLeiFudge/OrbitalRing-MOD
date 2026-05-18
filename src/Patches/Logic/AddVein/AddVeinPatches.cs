@@ -52,21 +52,23 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         internal static void ModifyVeinData()
         {
             AddVeinProtos(
-                NewVein(15, "辉银矿脉", "I辉银矿", "Assets/texpack/铝矿脉", ProtoID.I石墨矿, 34, 3, 60),
-                NewVein(16, "深层熔岩", "I深层熔岩", "Icons/Vein/oil-vein", ProtoID.I深层熔岩, 0, 6, 60),
-                NewVein(17, "铀矿脉", "I铀矿", "Assets/texpack/V铀矿脉", ProtoID.I放射性矿物, 35, 2, 90),
-                NewVein(18, "硫磺矿脉", "I硫磺矿", "Assets/texpack/V黄铁矿脉", ProtoID.I硫磺矿, 36, 1, 60),
-                NewVein(19, "地下冰层", "I地下冰层", "Icons/Vein/oil-vein", ProtoID.I水, 0, 6, 60));
+                NewVein(15, "辉银矿脉", "I辉银矿", "Assets/texpack/铝矿脉", "yingkm", ProtoID.I石墨矿, 34, 3, 60),
+                NewVein(16, "深层熔岩", "I深层熔岩", "Icons/Vein/oil-vein", "scrykm", ProtoID.I深层熔岩, 0, 6, 60),
+                NewVein(17, "铀矿脉", "I铀矿", "Assets/texpack/V铀矿脉", "youkm", ProtoID.I放射性矿物, 35, 2, 90),
+                NewVein(18, "硫磺矿脉", "I硫磺矿", "Assets/texpack/V黄铁矿脉", "liukm", ProtoID.I硫磺矿, 36, 1, 60),
+                NewVein(19, "地下冰层", "I地下冰层", "Icons/Vein/oil-vein", "shuikm", ProtoID.I水, 0, 6, 60)
+            );
             return;
 
-            VeinProto NewVein(int id, string name, string description, string iconPath, int miningItem, int miningEffect, int modelIndex,
-                int miningTime) =>
+            VeinProto NewVein(int id, string name, string description, string iconPath, string iconTag, int miningItem,
+                int miningEffect, int modelIndex, int miningTime) =>
                 new VeinProto
                 {
                     ID = id,
                     Name = name,
                     Description = description,
                     IconPath = iconPath,
+                    IconTag = iconTag,
                     MiningItem = miningItem,
                     MiningEffect = miningEffect,
                     ModelIndex = modelIndex,
@@ -94,10 +96,6 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
                     veins.dataArray[index].Name = "莫桑石矿";
                     veins.dataArray[index].Description = "I莫桑石";
                 }
-                //Debug.LogFormat("veins id {0} {1}, MinerBaseModelIndex{2} MiningEffect{3}", index, veins.dataArray[index].Name, veins.dataArray[index].MinerBaseModelIndex, veins.dataArray[index].MiningEffect);
-                //Debug.LogFormat("MinerCircleModelIndex {0} ModelIndex{1} MiningAudio {2} ModelCount{3}", veins.dataArray[index].MinerCircleModelIndex, veins.dataArray[index].ModelIndex, veins.dataArray[index].MiningAudio, veins.dataArray[index].ModelCount);
-                //Debug.LogFormat("CircleRadius {0} MiningItem {1} MiningTime {2}", veins.dataArray[index].CircleRadius, veins.dataArray[index].MiningItem, veins.dataArray[index].MiningTime);
-                //Debug.LogFormat("IconPath {0}", veins.dataArray[index].IconPath);
             }
 
             for (var index = 0; index < protos.Length; ++index)

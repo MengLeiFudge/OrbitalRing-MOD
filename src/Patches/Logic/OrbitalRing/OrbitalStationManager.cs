@@ -90,6 +90,13 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
                         w.Write(storeShare[3]);
                         w.Write(storeShare[4]);
                     }
+                    w.Write(outerPair.Value.Rings[i].orbitalRingStorage.storageLimit.Count);
+                    foreach (var storageItem in outerPair.Value.Rings[i].orbitalRingStorage.storageLimit) {
+                        int itemId = storageItem.Key;
+                        int customLimit = storageItem.Value;
+                        w.Write(itemId);
+                        w.Write(customLimit);
+                    }
 
                     for (int j = 0; j < 1000; j++) {
                         w.Write(outerPair.Value.Rings[i].insideRingPositions[j]);
@@ -183,6 +190,14 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
                                 };
                             }
                         }
+                        // 16777222 = 1.0.6版本，1.0.6之前没有storageLimit
+                        if (ProjectOrbitalRing.importVersion > 16777222) {
+                            int storageLimitCount = r.ReadInt32();
+                            for (int y = 0; y < storageLimitCount; y++) {
+                                OnePlanetOneRing.orbitalRingStorage.storageLimit[r.ReadInt32()] = r.ReadInt32();
+                            }
+                        }
+
                         for (int y = 0; y < 1000; y++) {
                             OnePlanetOneRing.insideRingPositions[y] = r.ReadBoolean();
                             OnePlanetOneRing.outsideRingPositions[y] = r.ReadBoolean();
