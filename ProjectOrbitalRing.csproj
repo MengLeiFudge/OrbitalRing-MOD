@@ -251,6 +251,7 @@
     <Compile Include="src\Patches\UI\UIPowerGeneratorWindowPatches.cs" />
     <Compile Include="src\Patches\UI\GridIndexExpand\UISignalPickerPatches.cs" />
     <Compile Include="src\Patches\UI\UITechNodePatches.cs" />
+    <Compile Include="src\Patches\UI\UITutorialWindowPatch.cs" />
     <Compile Include="src\Patches\UI\UITutorialWindowPatches.cs" />
     <Compile Include="src\Patches\UI\UpdateLogoPatches.cs" />
     <Compile Include="src\Patches\UI\Utils\MyWindowCtl.cs" />

@@ -94,11 +94,12 @@ namespace ProjectOrbitalRing.Compatibility
             if (string.IsNullOrEmpty(msg)) return;
 
             UIMessageBox.Show("OrbitalRingTitle".TranslateFromJson(), msg.TranslateFromJson(), "确定".TranslateFromJson(),
-                "跳转交流群".TranslateFromJson(), "跳转日志".TranslateFromJson(), UIMessageBox.INFO, null, OpenBrowser, OpenLog);
+                "跳转交流群".TranslateFromJson(), "查看不兼容MOD".TranslateFromJson(), UIMessageBox.INFO, null, OpenBrowser, IncompatibleMods);
         }
 
         public static void OpenBrowser() => Application.OpenURL("星环链接".TranslateFromJson());
 
-        public static void OpenLog() => Application.OpenURL(Path.Combine(ProjectOrbitalRing.ModPath, "CHANGELOG.md"));
+        public static void IncompatibleMods() => UIMessageBox.Show("查看不兼容MOD".TranslateFromJson(), "不兼容MOD".TranslateFromJson(), "确定".TranslateFromJson(),
+               UIMessageBox.INFO);
     }
 }

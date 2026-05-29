@@ -962,7 +962,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
         internal static void IntoOtherSave()
         {
             InitData();
-            if (DSPGame.IsMenuDemo || GameMain.mainPlayer == null) {
+            if (DSPGame.IsMenuDemo) {
                 return;
             }
             UnlockWreckFalling(0);
@@ -976,7 +976,6 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
             itemProto.RefreshTranslation();
 
             ModifyFleetUpgradeTechs();
-
             lockBecauseItIsThere();
 
             itemProto = LDB.items.Select(1612);
@@ -1005,7 +1004,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
         [HarmonyPostfix]
         public static void GameData_Import_Patch(GameData __instance)
         {
-            if (DSPGame.IsMenuDemo || GameMain.mainPlayer == null) {
+            if (DSPGame.IsMenuDemo) {
                 return;
             }
             if (StarLuminosity == null) {

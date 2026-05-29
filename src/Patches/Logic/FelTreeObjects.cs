@@ -1,12 +1,7 @@
-﻿using GalacticScale;
-using HarmonyLib;
-using ProjectOrbitalRing.Patches.UI.Utils;
+﻿using HarmonyLib;
 using ProjectOrbitalRing.Utils;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection.Emit;
 using UnityEngine;
 using static ProjectOrbitalRing.Patches.Logic.TheMountainMovingProject;
 using static ProjectOrbitalRing.ProjectOrbitalRing;
@@ -248,5 +243,41 @@ namespace ProjectOrbitalRing.Patches.Logic
             return false;
         }
 
+        // 气巨采集概率掉落
+        [HarmonyTranspiler]
+        [HarmonyPatch(typeof(PlayerAction_Mine), nameof(PlayerAction_Mine.GameTick))]
+        public static IEnumerable<CodeInstruction> PlayerAction_Mine_GameTick_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldarg_0),
+                new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(PlayerAction), nameof(PlayerAction.player))),
+                new CodeMatch(OpCodes.Ldloc_S)
+                );
+
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0),
+                new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(FelTreeObjects), nameof(GasPowerGen_Patch))));
+
+            return matcher.InstructionEnumeration();
+        }
+
+        public static void GasPowerGen_Patch(PlayerAction_Mine playerAction)
+        {
+            DotNet35Random DotNet35Random = new DotNet35Random();
+            double random = DotNet35Random.NextDouble();
+            if (random > 0.00001 && random <= 0.9501) {
+                return;
+            }
+            int itemId = 6521; // 富勒醇
+            int itemCount = 1;
+            int num5 = playerAction.player.TryAddItemToPackage(itemId, itemCount, 0, true, 0, false);
+            playerAction.AddProductionStat(itemId, itemCount, playerAction.player.factory);
+            playerAction.miningFlag |= 1 << (int)LDB.veins.GetVeinTypeByItemId(itemId);
+            playerAction.controller.gameData.history.AddFeatureValue(2250000 + itemId, itemCount);
+            if (num5 > 0) {
+                UIItemup.Up(itemId, num5);
+                UIRealtimeTip.PopupItemGet(itemId, num5, playerAction.player.position - playerAction.player.position.normalized * 2f, 0);
+            }
+        }
     }
 }

@@ -5477,10 +5477,10 @@
         "ID": 510,
         "Name": "气云超精炼",
         "Description": "R气云超精炼",
-        "IconPath": "Assets/texpack/R气云超精炼",
-        "IconTag": "rqycjl",
+        "IconPath": "",//Assets/texpack/R气云超精炼",
+        //"IconTag": "rqycjl",
         "Type": 2,
-        "GridIndex": 4207,
+        "GridIndex": 0,
         "Time": 900,
         "Input": [
             6519,
@@ -6646,7 +6646,7 @@
         "IconPath": "Assets/texpack/R富勒醇增产剂",
         "IconTag": "rflzcj",
         "Type": 2,
-        "GridIndex": 4507,
+        "GridIndex": 4407,
         "Time": 120,
         "Input": [
             6521,
@@ -6672,7 +6672,7 @@
         "Description": "",
         "IconPath": "",
         "Type": 2,
-        "GridIndex": 4307,
+        "GridIndex": 4207,
         "Time": 180,
         "Input": [
             7015,
@@ -6700,7 +6700,7 @@
         "Description": "",
         "IconPath": "",
         "Type": 2,
-        "GridIndex": 4407,
+        "GridIndex": 4307,
         "Time": 180,
         "Input": [
             7101,

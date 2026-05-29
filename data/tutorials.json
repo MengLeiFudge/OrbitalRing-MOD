@@ -1,58 +1,118 @@
 ﻿[
-  {
-    "ID": 31,
-    "Name": "星环介绍标题",
-    "LayoutFileName": "orbitalring-tutorials-31",
-    "DeterminatorName": "TOR_GameSecond",
-    "DeterminatorParams": [
-      4
-    ]
-  },
-  {
-    "ID": 32,
-    "Name": "托钛介绍标题",
-    "LayoutFileName": "orbitalring-tutorials-32",
-    "DeterminatorName": "TOR_TechUnlocked",
-    "DeterminatorParams": [
-      2902,
-      1
-    ]
-  },
-  {
-    "ID": 33,
-    "Name": "过滤器介绍标题",
-    "LayoutFileName": "orbitalring-tutorials-33",
-    "DeterminatorName": "TOR_TechUnlocked",
-    "DeterminatorParams": [
-      1311,
-      1
-    ]
-  },
-  {
-    "ID": 34,
-    "Name": "行星特质介绍标题",
-    "LayoutFileName": "orbitalring-tutorials-34",
-    "DeterminatorName": "TOR_OnBuild",
-    "DeterminatorParams": [
-      2204
-    ]
-  },
-  {
-    "ID": 35,
-    "Name": "严禁激光砍树介绍标题",
-    "LayoutFileName": "orbitalring-tutorials-35",
-    "DeterminatorName": "TOR_GameSecond",
-    "DeterminatorParams": [
-      5
-    ]
-  },
-  //{
-  //  "ID": 36,
-  //  "Name": "量化计算器介绍标题",
-  //  "PreText": "量化计算器介绍前字",
-  //  "DeterminatorName": "TOR_GameSecond",
-  //  "DeterminatorParams": [
-  //    5
-  //  ]
-  //}
+    {
+        "ID": 31,
+        "Name": "星环介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-31",
+        "DeterminatorName": "TOR_GameSecond",
+        "DeterminatorParams": [
+            4
+        ]
+    },
+    {
+        "ID": 32,
+        "Name": "托钛介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-32",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            2902,
+            1
+        ]
+    },
+    {
+        "ID": 33,
+        "Name": "过滤器介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-33",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1311,
+            1
+        ]
+    },
+    {
+        "ID": 34,
+        "Name": "行星特质介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-34",
+        "DeterminatorName": "TOR_OnBuild",
+        "DeterminatorParams": [
+            2204
+        ]
+    },
+    {
+        "ID": 35,
+        "Name": "取消配方吞原料介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-35",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1943,
+            1
+        ]
+    },
+    {
+        "ID": 36,
+        "Name": "飞行舱说明书介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-36",
+        "DeterminatorName": "TOR_GameSecond",
+        "DeterminatorParams": [
+            6
+        ]
+    },
+    {
+        "ID": 37,
+        "Name": "轨道设施说明书介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-37",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1940,
+            1
+        ]
+    },
+    {
+        "ID": 38,
+        "Name": "星环说明书介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-38",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1970,
+            1
+        ]
+    },
+    {
+        "ID": 39,
+        "Name": "真通关一阶说明介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-39",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1802,
+            1
+        ]
+    },
+    {
+        "ID": 40,
+        "Name": "真通关二阶说明介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-40",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1952,
+            1
+        ]
+    },
+    {
+        "ID": 41,
+        "Name": "真通关三阶说明介绍标题",
+        "LayoutFileName": "orbitalring-tutorials-41",
+        "DeterminatorName": "TOR_TechUnlocked",
+        "DeterminatorParams": [
+            1960,
+            1
+        ]
+    },
+    //{
+    //    "ID": 42,
+    //    "Name": "不建议开GS介绍标题",
+    //    "LayoutFileName": "orbitalring-tutorials-42",
+    //    "DeterminatorName": "TOR_GameSecond",
+    //    "DeterminatorParams": [
+    //        7
+    //    ]
+    //}
 ]

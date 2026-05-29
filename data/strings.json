@@ -260,14 +260,24 @@
         "ENUS": "The manufacturing table has been added with a new plug-in slot, which is the circular hole that appears below the selected recipe.\nThe recipe for the plugin is located at the bottom left corner of the building page.\nSome formulas (such as chips) require the insertion of ultra-high-efficiency filter plugins to execute.\n\nYou can insert plugins in bulk by holding the ctrl key and swiping across the manufacturing table with the handheld plugin"
     },
     {
-        "Name": "严禁激光砍树介绍标题",
-        "ZHCN": "不要使用激光砍树MOD",
-        "ENUS": "Do not use the LaserClearing mod"
+        "Name": "取消配方吞原料介绍标题",
+        "ZHCN": "导致原料消失的错误操作",
+        "ENUS": "Incorrect operation leading to the disappearance of raw materials"
     },
     {
-        "Name": "严禁激光砍树介绍前字",
-        "ZHCN": "不要使用激光砍树MOD（LaserClearing），以及不要使用辅助MOD的加速砍树功能，使用以上功能会使得星环必要流程中的掉落物无法正常掉落，导致<color=\"#FD965ECC\">无法正常进行游戏流程</color>。",
-        "ENUS": "Do not use the LaserClearing mod, nor the accelerated tree-cutting feature of any auxiliary mods. Using these functions will prevent the normal drop of items in the necessary processes of the Star Ring, making it <color=\"#FD965ECC\">impossible to progress through the game normally</color>."
+        "Name": "取消配方吞原料介绍前字",
+        "ZHCN": "以下为具体情况介绍，不想看的直接跳到下面看结论：\n  当生产建筑内的产物没有抓出而导致堵塞，并且配方执行进度已经满一圈停住时，此时取消配方或拆除建筑会导致最后这一圈既无产物，原料也直接消失。\n此为原版问题，据称是为了解决某种情况下无中生有的问题导致的，因此本MOD不负责修复\n\n<color=\"#FD965ECC\">结论：</color>\n<color=\"#FD965ECC\">不要在生产配方执行进度因为堵产物而停滞在满一圈时取消或拆除建筑，如果配方是产物自回填到原料的话，会导致循环的自回填原料消失</color>",
+        "ENUS": "The following is a detailed description of the situation. If you don't want to read it, please skip to the conclusion below: \n When the products inside the production building are not extracted, causing a blockage, and the recipe execution progress has reached a full circle and stopped, canceling the recipe or demolishing the building at this time will result in the last circle having neither products nor raw materials, and the raw materials will also disappear directly. \n This is an issue in the original version, allegedly caused by solving a problem that doesn't exist in some situations, so this MOD is not responsible for fixing it. \n\n<color=\"#FD965ECC\">Conclusion:</color> \n <color=\"#FD965ECC\">Do not cancel or demolish the building when the production recipe execution progress is stalled at a full circle due to product blockage. If the recipe involves self-backfilling of products into raw materials, it will result in the disappearance of the self-backfilled raw materials in a cycle</color>"
+    },
+    {
+        "Name": "不建议开GS介绍标题",
+        "ZHCN": "不建议开 GalacticScale MOD",
+        "ENUS": "It is not recommended to enable the GalacticScale MOD"
+    },
+    {
+        "Name": "不建议开GS介绍前字",
+        "ZHCN": "不建议星环MOD和GalacticScale MOD同开，有诸多未兼容的内容，可能出现的问题包括但不限于：\n  初始行星没有煤和硫磺等资源\n  采矿机覆盖矿簇范围异常\n  其他行星资源或星球特质异常\n  星环无法建成，导致所有以星环为前提的内容全部无法体验\n  变动星系生成导致死档。",
+        "ENUS": "It is not recommended to enable both the OrbitalRing MOD and the GalacticScale MOD simultaneously due to numerous incompatibilities. Potential issues may include, but are not limited to: \n  Initial planets lacking resources such as coal and sulfur \n  Abnormal coverage of mining clusters by mining machines \n  Abnormal resources or planet traits on other planets \n  Failure to build the Orbital ring, resulting in the inability to experience all content that relies on the Orbital ring\n  The generation of variable galaxies leads to dead save."
     },
     {
         "Name": "行星特质介绍标题",
@@ -278,6 +288,66 @@
         "Name": "行星特质介绍前字",
         "ZHCN": "一个行星可能会拥有某种全球性的加成特质或隐藏，可在行星视图中（默认快捷键为M键）点击行星特质打开查看。",
         "ENUS": "A planet may possess certain global bonus traits or hidden features, which can be accessed by clicking on the planet traits in the planet view (default shortcut key is M)."
+    },
+    {
+        "Name": "飞行舱说明书介绍标题",
+        "ZHCN": "拆除飞行舱可得",
+        "ENUS": "Dismantling the flight cabin yields"
+    },
+    {
+        "Name": "飞行舱说明书介绍前字",
+        "ZHCN": "飞行舱拆除可得：\n  4个基础制造台\n  500个低速传送带\n  300个低速分拣器\n  一枚无限装填子弹\n  一个火力发电厂 \n\n另，自带的满蓄电池在机甲燃料舱用完后，将空电池建造于地上可接受电网多余电力充电，充满时拆除会重新获得满蓄电池",
+        "ENUS": "Dismantling the flight cabin yields: \n  4 basic manufacturing tables\n  500 Low-speed conveyor belt\n  300 Low-speed sorter\n  1 bullet with unlimited reloading\n  1 thermal Power Plant \n\nAdditionally, once the built-in fully charged batteries are depleted in the mecha's fuel tank, the empty batteries can be constructed on the ground to accept excess power from the grid for charging. Upon being fully charged, they can be dismantled to regain fully charged batteries"
+    },
+    {
+        "Name": "轨道设施说明书介绍标题",
+        "ZHCN": "轨道设施说明",
+        "ENUS": "Description of synchronous orbit facilities"
+    },
+    {
+        "Name": "轨道设施说明书介绍前字",
+        "ZHCN": "<color=\"#FD965ECC\">太空电梯</color>的建造位置固定，行星赤道有1000格，每50格可建造一个电梯。建造时会自动吸附最近的可建造点位，一个行星最多可建造40个，赤道上下各20个，\n\n<color=\"#FD965ECC\">太空电梯是轨道设施的配套建筑</color>，轨道设施与太空电梯一样建造点位固定，只不过太空电梯建造于地表，而轨道设施建造于同步轨道。当轨道设施的正下方建造了太空电梯时，<color=\"#FD965ECC\">太空电梯的储存空间将对轨道设施开放</color>，生产类轨道设施会自动从太空电梯获取原料，输出产物，物流港则会与太空电梯同步物品槽。",
+        "ENUS": "The construction location of <color=\"#FD965ECC\">space elevators</color> is fixed. There are 1000 grids on the equator of a planet, and one elevator can be built every 50 grids. During construction, the nearest buildable point will be automatically adsorbed. A planet can have a maximum of 40 elevators, with 20 on each side of the equator. \n\n<color=\"#FD965ECC\">Space elevators are supporting buildings for orbital facilities</color>. Orbital facilities, like space elevators, have fixed construction points, except that space elevators are built on the surface, while orbital facilities are built in geostationary orbit. When a space elevator is built directly below an orbital facility, <color=\"#FD965ECC\">the storage space of the space elevator will be open to the orbital facility</color>. Production-type orbital facilities will automatically obtain raw materials from the space elevator and output products. Logistics ports will synchronize with the space elevator's item slots."
+    },
+    {
+        "Name": "星环说明书介绍标题",
+        "ZHCN": "星环说明",
+        "ENUS": "Orbital Ring Manual"
+    },
+    {
+        "Name": "星环说明书介绍前字",
+        "ZHCN": "一个行星上拥有两个<color=\"#FD965ECC\">星环</color>，分别在赤道的上下各一个，（小卫星只有赤道一个）每个星环可拥有两个<color=\"#FD965ECC\">组件环</color>，组件环由<color=\"#FD965ECC\">轨道连接组件</color>完整绕星球一圈建造而成，会将属于这个星环的轨道设施串联起来。\n\n当星环建成一个组件环时，将获得<color=\"#FD965ECC\">共享空间</color>，属于这个星环的太空电梯，若物品槽<color=\"#FD965ECC\">勾选了接入共享空间</color>，物品数量大于上限的一半时，超过一半的部分会被送入这个星环的共享空间。低于一半时，会尝试从共享空间补充到上限的一半。生产类轨道设施原料的获取和产物的存入会优先选择共享空间。\n\n共享空间的默认存入上限为每种20w，有特殊默认上限的物品会写在其物品描述中，点击在此星环上建造的天枢座会打开共享空间查看窗口，可在窗口中调整存入上限\n\n 当星环建成第二个组件环时，将获得<color=\"#FD965ECC\">额外20个</color>轨道设施建造点位，夹在原20个点位中间（只有额外20个轨道设施点位，没有太空电梯的，额外的20个轨道设施靠共享空间提供物品存取能力）。",
+        "ENUS": "A planet possesses two <color=\"#FD965ECC\">Orbital Rings</color>, one located above and one below the equator.（The small satellite only has one equator） Each Orbital Ring can have two <color=\"#FD965ECC\">component rings</color>, which are constructed by <color=\"#FD965ECC\">Orbital Connection Components</color> to complete a full orbit around the planet, thereby connecting the orbital facilities belonging to that Orbital Ring. \n\n When a component ring of the Orbital Ring is completed, it will gain a <color=\"#FD965ECC\">shared space</color>. For the space elevator belonging to this Orbital Ring, if the item slot tick the box for <color=\"#FD965ECC\">access to shared space</color> and the number of items exceeds half of the limit, the excess items will be sent to the shared space of this Orbital Ring. If the number of items is less than half, an attempt will be made to replenish the shared space to half of the limit. For the acquisition of raw materials for production-related orbital facilities and the storage of products, the underlying space elevator will be chosen first, followed by the shared space. \n\n The default storage limit for shared spaces is 200k for each type. Items with special default limits will be indicated in their item descriptions. Clicking on the Tianzhu Seat built on this orbital ring will open the shared space viewing window, where you can adjust the storage limit \n\n When the second component ring of the Orbital Ring is completed, an <color=\"#FD965ECC\">additional 20</color> orbital facility construction points will be obtained, sandwiched between the original 20 points (only additional 20 orbital facility points are available, without a space elevator; the additional 20 orbital facilities rely on the shared space to provide item storage and retrieval capabilities)."
+    },
+    {
+        "Name": "真通关一阶说明介绍标题",
+        "ZHCN": "真通关一阶说明",
+        "ENUS": "Instructions for True Ending Level 1"
+    },
+    {
+        "Name": "真通关一阶说明介绍前字",
+        "ZHCN": "您现在成功进入真通关第一阶段，黑洞星系已经解禁巨构的建设，在第一阶段，解禁了电磁弹射器，需要像建设戴森球那样通过弹射器将物品弹射至黑洞周围的轨道上，只是弹射物品不是戴森球的太阳帆，而是<color=\"#FD965ECC\">引力发生装置</color>。\n\n需要注意的是，发射井依旧没有解禁，意味着在第一阶段将没有组件节点吸附轨道上的游离弹射物，而游离弹射物和游离太阳帆一样有<color=\"#FD965ECC\">存在时限</color>，因此最好在到达存在时限前达到进入二阶的标准\n\n达到进入二阶的标准为：引力发生装置弹射至黑洞轨道上，直到<color=\"#FD965ECC\">黑洞巨构的功率达到80Mg</color>",
+        "ENUS": "You have now successfully entered the first phase of True Ending. The construction of the Black Hole Galaxy has been unlocked for the construction of the Giant Structure. In the first phase, the Electromagnetic Catapult has been unlocked. Similar to building a Dyson Sphere, items need to be catapulted into the orbit around the black hole using the catapult. However, the items being catapulted are not solar sails for the Dyson Sphere, but rather <color=\"#FD965ECC\">Gravity generator</color>. \n\n It is important to note that the launch silos have not been unlocked yet, meaning that in the first phase, there will be no component nodes to attract free-floating catapulted objects in orbit. Similarly to free-floating solar sails, these free-floating catapulted objects have <color=\"#FD965ECC\">a limited existence time</color>. Therefore, it is best to meet the criteria for entering the second phase before reaching the expiration of their existence time. \n\n The criteria for entering the second phase are: the Gravity Generator must be catapulted into the orbit around the black hole until <color=\"#FD965ECC\">the power of the Black Hole Giant Structure reaches 80Mg</color>"
+    },
+    {
+        "Name": "真通关二阶说明介绍标题",
+        "ZHCN": "真通关二阶说明",
+        "ENUS": "Instructions for True Ending Level 2"
+    },
+    {
+        "Name": "真通关二阶说明介绍前字",
+        "ZHCN": "您现在成功进入真通关第二阶段，黑洞巨构正式命名为数学率引擎，解锁了<color=\"#FD965ECC\">数学率引擎-深蓝之井-运载火箭</color>，可以使用火箭建设节点以吸附游离的弹射物。电磁弹射器的弹射物从引力发生装置更换为<color=\"#FD965ECC\">反物质燃料棒</color>（也可以是<color=\"#FD965ECC\">奇异湮灭燃料棒</color>），自二阶开始，数学率引擎将<color=\"#FD965ECC\">不再计算游离的弹射物的功率</color>。\n\n当二阶数学率引擎达到9k休谟时<color=\"#FD965ECC\">解除</color>三阶科技的<color=\"#FD965ECC\">隐藏</color>，当三阶科技研究完成时，会<color=\"#FD965ECC\">立刻清空数学率引擎的游离弹射物</color>，请确保研究完成时所有的游离弹射物已经吸附完成。同时，会<color=\"#FD965ECC\">记录当前的休谟值</color>，三阶建造的节点和吸附的弹射物将不再直接增加休谟值，而是转化为<color=\"#FD965ECC\">系数</color>(系数为增加的休谟/15000)，<color=\"#FD965ECC\">系数乘以记录的休谟值才是最终的休谟值</color>，同时已存在的层数的节点将<color=\"#FD965ECC\">不再能吸附</color>，需要<color=\"#FD965ECC\">新建戴森层</color>，因此三阶科技请视情况自行决定研究完成的时机。",
+        "ENUS": "You have now successfully entered the second phase of the True Ending. The Black Hole Superstructure has been officially named the Mathematical Ratio Engine. The unlocking of <color=\"#FD965ECC\">the Mathematical Rate Engine - Well of Dark Blue - Launch Vehicle</color> allows you to use rockets to construct nodes to attract and capture free projectiles. The projectiles of the Electromagnetic Catapult have been replaced from gravitational generators to <color=\"#FD965ECC\">antimatter fuel rods</color> (which can also be <color=\"#FD965ECC\">exotic annihilation fuel rods</color>),Starting from Level 2, the Mathematical Rate Engine will <color=\"#FD965ECC\">no longer calculate the power of free-floating projectiles</color>.\n\n When the second level the Mathematical Rate Engine reaches 9k Hume, the <color=\"#FD965ECC\">hidden state</color> of the third-level technology will be <color=\"#FD965ECC\">lifted</color> . When Tier 3 technology research is completed, the free-floating projectiles of the Mathematical Rate Engine will be <color=\"#FD965ECC\">immediately cleared</color>. Please ensure that all free-floating projectiles have been adsorbed by the time research is completed. Additionally, the <color=\"#FD965ECC\">current Hume value will be recorded</color>, and nodes constructed in Tier 3 and adsorbed projectiles will no longer directly increase the Hume value. Instead, they will be converted into a <color=\"#FD965ECC\">coefficient</color> (coefficient is the increased Hume/10000), and the final Hume value will be calculated by <color=\"#FD965ECC\">multiplying the recorded Hume value by the coefficient</color>. Meanwhile, existing layers of nodes will <color=\"#FD965ECC\">no longer be able to adsorb</color>, requiring the construction of new Dyson layers. Therefore, please decide on the timing of completing Tier 3 technology research based on your situation."
+    },
+    {
+        "Name": "真通关三阶说明介绍标题",
+        "ZHCN": "真通关三阶说明",
+        "ENUS": "Instructions for True Ending Level 3"
+    },
+    {
+        "Name": "真通关三阶说明介绍前字",
+        "ZHCN": "您已进入真通关最后阶段，发射井火箭更换为<color=\"#FD965ECC\">数学率引擎-起振焦点-运载火箭</color>。电磁弹射器的弹射物从反物质燃料棒更换为<color=\"#FD965ECC\">引力钻头</color>。\n\n数学率引擎第三阶段的功率计算为：进入第三阶段时二阶达到的休谟值 乘以 （在第三阶段新增的休谟值 除以 15000）等于 最终显示的休谟值。\n\n<color=\"#FD965ECC\">当数学率引擎在第三阶段达到20k休谟值时，视为达成真通关</color>",
+        "ENUS": "You have entered the final stage of true clearance, where the silo rocket is replaced with <color=\"#FD965ECC\">the Mathematical Rate Engine - Vibration Excitation Focus - Launch Vehicle</color>. The projectile of the electromagnetic launcher is changed from antimaterial fuel rods to <color=\"#FD965ECC\">gravitational drill bits</color>. \n\nThe power calculation for the third stage of the mathematical rate engine is: the Hume value reached in the second stage when entering the third stage multiplied by (the newly added Hume value in the third stage divided by 15000) equals the final displayed Hume value. \n\n<color=\"#FD965ECC\">When the mathematical rate engine reaches a Hume value of 20k in the third stage, it is considered to have achieved True Ending</color>"
     },
     {
         "Name": "离星燃料消耗描述",
@@ -2190,7 +2260,7 @@
     },
     {
         "Name": "T富勒烯研究",
-        "ZHCN": "碳是一种神奇的元素，在材料学上光只有它一种元素就有无定形碳，石墨，钻石，石墨烯，碳纳米管等诸多结构，而现在，还有一种结构：球形碳富勒烯，无论是在球内内嵌原子，还是在球面节点上增加功能基团，都有重要的工业意义。",
+        "ZHCN": "碳是一种神奇的元素，在材料学上光只有它一种元素就有无定形碳，石墨，钻石，石墨烯，碳纳米管等诸多结构，而现在，还有一种结构：球形碳富勒烯，无论是在球内内嵌原子，还是在球面节点上增加功能基团，都有重要的工业意义。\n在气巨上<color=\"#FD965ECC\">手动开采</color>气态巨行星物质<color=\"#FD965ECC\">概率</color>获得<color=\"#FD965ECC\">富勒醇</color>",
         "ENUS": "Carbon is a magical element, and in materials science, there are many structures of amorphous carbon, graphite, diamond, graphene, carbon nanotubes, and so on. Nowadays, there is also a structure called spherical carbon fullerene, which has important industrial significance whether it is embedding atoms inside the sphere or adding functional groups to the spherical nodes."
     },
     {
@@ -3117,8 +3187,8 @@
     },
     {
         "Name": "T深层熔岩处理描述",
-        "ZHCN": "地幔物质熔融着丰富的稀有金属元素，一路渗透移动到表层时已经掺杂了太多杂质，如果能直接获得深层的地幔岩浆，那就能量产工业最尖端的金属产品——液态金属。\n<color=\"#FD965ECC\">在任何资源倍率下都不会衰减</color>",
-        "ENUS": "The mantle material melts rich rare metal elements, and when it infiltrates and moves to the surface, it is already mixed with too many impurities. If we can directly obtain deep mantle magma, we can mass produce the most advanced metal product in industry - liquid metal.\n<color=\"#FD965ECC\"> It will not decay at any resource multiplier</color>"
+        "ZHCN": "地幔物质熔融着丰富的稀有金属元素，一路渗透移动到表层时已经掺杂了太多杂质，如果能直接获得深层的地幔岩浆，那就能量产工业最尖端的金属产品——液态金属。\n<color=\"#FD965ECC\">在任何资源倍率下都不会衰减，无视钻井平台显示的半衰期</color>",
+        "ENUS": "The mantle material melts rich rare metal elements, and when it infiltrates and moves to the surface, it is already mixed with too many impurities. If we can directly obtain deep mantle magma, we can mass produce the most advanced metal product in industry - liquid metal.\n<color=\"#FD965ECC\"> It will not decay at any resource multiplier,Ignoring the half-life displayed on the drilling platform</color>"
     },
     {
         "Name": "T裂变重水堆",
@@ -5027,8 +5097,8 @@
     },
     {
         "Name": "T宇宙的齿轮",
-        "ZHCN": "宇宙是个庞大机器，以数学，规则为齿轮构筑的，数千万亿年都在精准运行的机器。如今借由量子比特架构的强大算力，我们得以尝试通过引力发生阵列拨动黑洞的重力涟漪，以此来撬动这个庞大机器中的齿轮：数学率。\n\n<color=\"#FD965ECC\">注意：研究完成时会清空游离的弹射物</color>",
-        "ENUS": "The universe is a massive machine, constructed with mathematics and rules as gears, and has been operating precisely for billions of years. Nowadays, with the powerful computing power of quantum bit architecture, we are able to attempt to manipulate the gravitational ripples of black holes through gravitational arrays, in order to lever the gears in this massive machine: mathematical rates. \n\n<color=\"#FD965ECC\">Note: Free-floating projectiles will be cleared upon completion of the study</color>"
+        "ZHCN": "宇宙是个庞大机器，以数学，规则为齿轮构筑的，数千万亿年都在精准运行的机器。如今借由量子比特架构的强大算力，我们得以尝试通过引力发生阵列拨动黑洞的重力涟漪，以此来撬动这个庞大机器中的齿轮：数学率。\n\n<color=\"#FD965ECC\">注意：研究完成时会清空游离的弹射物</color>\n<color=\"#FD965ECC\">注意：研究完成时数学率引擎已有的层数将无法再吸附游离的弹射物</color>",
+        "ENUS": "The universe is a massive machine, constructed with mathematics and rules as gears, and has been operating precisely for billions of years. Nowadays, with the powerful computing power of quantum bit architecture, we are able to attempt to manipulate the gravitational ripples of black holes through gravitational arrays, in order to lever the gears in this massive machine: mathematical rates. \n\n<color=\"#FD965ECC\">Note: Free-floating projectiles will be cleared upon completion of the study</color>\n<color=\"#FD965ECC\">Note: Upon completion of the research, the existing layers of the mathematical rate engine will no longer be able to adsorb free projectiles</color>"
     },
     {
         "Name": "T宇宙的齿轮完成",

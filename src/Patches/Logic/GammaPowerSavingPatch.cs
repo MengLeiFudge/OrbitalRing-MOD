@@ -2,6 +2,9 @@
 using static ProjectOrbitalRing.ProjectOrbitalRing;
 using System.Collections.Generic;
 using System.Reflection.Emit;
+using System;
+using UnityEngine;
+using ProjectOrbitalRing.Patches.Logic.AddVein;
 
 
 namespace ProjectOrbitalRing.Patches.Logic
@@ -66,6 +69,60 @@ namespace ProjectOrbitalRing.Patches.Logic
             temp = (long)((double)temp * (double)response);
             if (__instance.productId == 0) {
                 __result = temp;
+            }
+        }
+
+        // 数学率引擎的锅不生效，防止功率显示为负数
+        [HarmonyPrefix]
+        [HarmonyPatch(typeof(PowerSystem), "RequestDysonSpherePower")]
+        public static bool RequestDysonSpherePowerPrePatch(ref PowerSystem __instance)
+        {
+            PlanetFactory factory = __instance.factory;
+            return BanPowerGenGammaReq(factory);
+        }
+
+        [HarmonyPatch(typeof(GameLogic), nameof(GameLogic._power_gen_gamma_parallel))]
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> GameLogic_power_gen_gamma_parallel_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(GameLogic), nameof(GameLogic.factories))));
+
+            object planetFactory = matcher.Advance(3).Operand; // 变量索引
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(PowerGeneratorComponent), nameof(PowerGeneratorComponent.gamma))));
+
+            object IL_01E9 = matcher.Advance(1).Operand; // 变量索引
+
+            matcher.Advance(1).InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, planetFactory),
+                new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(GammaPowerSavingPatch), nameof(BanPowerGenGammaReq))),
+                new CodeInstruction(OpCodes.Brfalse_S, IL_01E9)
+            );
+
+            return matcher.InstructionEnumeration();
+        }
+
+        public static bool BanPowerGenGammaReq(PlanetFactory factory)
+        {
+            int starIndex = factory.planetId / 100 - 1;
+            if (GameMain.galaxy.stars[starIndex].type != EStarType.BlackHole) {
+                return true;
+            } else {
+                if (ProjectOrbitalRing.MoreMegaStructureCompatibility) {
+                    try {
+                        // 使用反射动态获取类型
+                        var mmType = Type.GetType("MoreMegaStructure.MoreMegaStructure, MoreMegaStructure");
+                        var starMegaType = mmType?.GetField("StarMegaStructureType")?.GetValue(null) as int[];
+
+                        if (starMegaType?[starIndex] != 0) {
+                            return true;
+                        }
+                    } catch (Exception ex) {
+                        // ignored
+                    }
+                }
+                return false;
             }
         }
     }

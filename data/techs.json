@@ -3916,12 +3916,8 @@
         "LevelCoef2": 0,
         "IsLabTech": true,
         "PreTechsMax": false,
-        "AddItems": [
-            7711
-        ],
-        "AddItemCounts": [
-            1
-        ],
+        "AddItems": [],
+        "AddItemCounts": [],
         "PropertyOverrideItems": [],
         "PropertyItemCounts": []
     },
@@ -4991,19 +4987,17 @@
         "LevelCoef2": 0,
         "IsLabTech": false,
         "PreTechsMax": false,
-        "AddItems": [ // 4采矿机，6满蓄电器MK1，4电力感应塔，4熔炉，1飞行舱说明书
+        "AddItems": [ // 4采矿机，6满蓄电器MK1，4电力感应塔，4熔炉
             2301,
             6219,
             2201,
-            2302,
-            7712
+            2302
         ],
         "AddItemCounts": [
             4,
             6,
             4,
-            4,
-            1
+            4
         ],
         "PropertyOverrideItems": [],
         "PropertyItemCounts": []
@@ -6439,12 +6433,8 @@
         "LevelCoef2": 0,
         "IsLabTech": true,
         "PreTechsMax": false,
-        "AddItems": [
-            7709
-        ],
-        "AddItemCounts": [
-            1
-        ],
+        "AddItems": [],
+        "AddItemCounts": [],
         "PropertyOverrideItems": [],
         "PropertyItemCounts": []
     },
@@ -6650,9 +6640,7 @@
             68.0,
             8.0
         ],
-        "PreTechs": [
-            1902
-        ],
+        "PreTechs": [],
         "PreTechsImplicit": [
             1902
         ],
@@ -6980,12 +6968,8 @@
         "LevelCoef2": 0,
         "IsLabTech": false,
         "PreTechsMax": false,
-        "AddItems": [
-            7711
-        ],
-        "AddItemCounts": [
-            1
-        ],
+        "AddItems": [],
+        "AddItemCounts": [],
         "PropertyOverrideItems": [],
         "PropertyItemCounts": []
     },
@@ -7762,12 +7746,8 @@
         "LevelCoef2": 0,
         "IsLabTech": true,
         "PreTechsMax": false,
-        "AddItems": [
-            7710
-        ],
-        "AddItemCounts": [
-            1
-        ],
+        "AddItems": [],
+        "AddItemCounts": [],
         "PropertyOverrideItems": [],
         "PropertyItemCounts": []
     },
@@ -8017,8 +7997,7 @@
         ],
         "HashNeeded": 252000,
         "UnlockRecipes": [
-            509,
-            510
+            509
         ],
         "UnlockFunctions": [],
         "UnlockValues": [],

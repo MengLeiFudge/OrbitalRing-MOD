@@ -5479,7 +5479,7 @@
         "IconPath": "Assets/texpack/I启示录",
         "IconTag": "qishil",
         "GridIndex": 5604,
-        "StackSize": 1,
+        "StackSize": 8,
         "Type": 4,
         "PreTechOverride": 0,
         "DescFields": [

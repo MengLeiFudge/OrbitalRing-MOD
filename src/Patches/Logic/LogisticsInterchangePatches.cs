@@ -700,7 +700,7 @@ namespace ProjectOrbitalRing.Patches.Logic
         [HarmonyPrefix]
         public static bool ImportPatch(PlanetFactory __instance, int _index, GameData _gameData, Stream s, BinaryReader r)
         {
-            if (DSPGame.IsMenuDemo || GameMain.mainPlayer == null) {
+            if (DSPGame.IsMenuDemo) {
                 return true;
             }
             __instance.index = _index;

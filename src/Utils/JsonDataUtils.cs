@@ -92,6 +92,7 @@ namespace ProjectOrbitalRing.Utils
             foreach (TutorialProtoJson protoJson in GetJsonContent<TutorialProtoJson>("tutorials")) {
                 LDBTool.PreAddProto(protoJson.ToProto());
             }
+            //UI Root/Overlay Canvas/In Game/Windows/Tutorial Window/left-panel/ListView
 
             #endregion
 
