@@ -26,9 +26,9 @@ namespace ProjectOrbitalRing.Patches.UI
 
             Transform pageParent = TipLevelObj.transform.parent;
 
-            CreateSettingObject(pageParent, "gb-ldbtc-setting", "UseLDBToolCache".TranslateFromJson(),
-                "UseLDBToolCacheAdditionalText".TranslateFromJson(), new Vector2(30, -220), LDBToolCacheEntry.Value,
-                out LDBToolCacheToggle);
+            //CreateSettingObject(pageParent, "gb-ldbtc-setting", "UseLDBToolCache".TranslateFromJson(),
+            //    "UseLDBToolCacheAdditionalText".TranslateFromJson(), new Vector2(30, -220), LDBToolCacheEntry.Value,
+            //    out LDBToolCacheToggle);
 
             //CreateSettingObject(pageParent, "gb-htc-setting", "HideTechMode".TranslateFromJson(),
             //    "HideTechModeAdditionalText".TranslateFromJson(), new Vector2(30, -260), HideTechModeEntry.Value, out HideTechModeToggle);
@@ -117,7 +117,7 @@ namespace ProjectOrbitalRing.Patches.UI
 
         private static void Reset()
         {
-            LDBToolCacheToggle.isOn = LDBToolCacheEntry.Value;
+            //LDBToolCacheToggle.isOn = LDBToolCacheEntry.Value;
             //HideTechModeToggle.isOn = HideTechModeEntry.Value;
             ShowMessageToggle.isOn = ShowMessageBoxEntry.Value;
             //ProductOverflowComboBox.itemIndex = ProductOverflowEntry.Value;

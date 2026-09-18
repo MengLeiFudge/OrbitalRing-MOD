@@ -65,7 +65,7 @@ namespace ProjectOrbitalRing
     {
         public const string MODGUID = "org.ProfessorCat305.OrbitalRing";
         public const string MODNAME = "OrbitalRing";
-        public const string VERSION = "1.0.16";
+        public const string VERSION = "1.0.17";
         public const string DEBUGVERSION = "";
 
 
@@ -106,8 +106,9 @@ namespace ProjectOrbitalRing
 
             configFile = Config;
 
-            LDBToolCacheEntry = Config.Bind("config", "UseLDBToolCache", false,
-                "Enable LDBTool Cache, which allows you use config to fix some compatibility issues.\n启用LDBTool缓存，允许使用配置文件修复部分兼容性问题");
+            // LDBTool在bind里做重复检查检查的是name不是id，id不同但是name一样的proto会被认为是重复的并拦截，导致这项设为true时会报错，在此关闭
+            //LDBToolCacheEntry = Config.Bind("config", "UseLDBToolCache", false,
+            //    "Enable LDBTool Cache, which allows you use config to fix some compatibility issues.\n启用LDBTool缓存，允许使用配置文件修复部分兼容性问题");
 
             //HideTechModeEntry = Config.Bind("config", "HideTechMode", true,
             //    "Enable Tech Exploration Mode, which will hide locked techs in tech tree.\n启用科技探索模式，启用后将隐藏未解锁的科技");
@@ -405,7 +406,7 @@ namespace ProjectOrbitalRing
         internal static void SetConfig(bool currentLDBToolCache, bool currentShowMessageBox,
             int currentProductOverflow)
         {
-            LDBToolCacheEntry.Value = currentLDBToolCache;
+            //LDBToolCacheEntry.Value = currentLDBToolCache;
             //HideTechModeEntry.Value = currentHideTechMode;
             ShowMessageBoxEntry.Value = currentShowMessageBox;
             //ProductOverflowEntry.Value = currentProductOverflow;

@@ -112,12 +112,16 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
         public static void CalculateThirdLevelMathematicalRateEngine()
         {
             if (MathematicalRateEngineDysonSphere == null) {
+                UIMessageBox.Show("休谟记录异常".Translate(), "休谟记录异常文字".Translate(), "确定".Translate(), UIMessageBox.INFO);
                 return;
             }
             SecondLevelEnergy = MathematicalRateEngineDysonSphere.energyGenCurrentTick - MathematicalRateEngineDysonSphere.energyReqCurrentTick;
             for (int i = 0; i < MathematicalRateEngineDysonSphere.layerCount; i++) {
                 if (MathematicalRateEngineDysonSphere.layersSorted[i] == null) continue;
                 SecondLevelLayer[i] = MathematicalRateEngineDysonSphere.layersSorted[i].id;
+            }
+            if (SecondLevelEnergy <= 0) {
+                UIMessageBox.Show("休谟记录异常".Translate(), "休谟记录异常文字".Translate(), "确定".Translate(), UIMessageBox.INFO);
             }
         }
 

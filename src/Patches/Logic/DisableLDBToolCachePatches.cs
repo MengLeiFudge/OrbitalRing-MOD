@@ -12,7 +12,8 @@ namespace ProjectOrbitalRing.Patches.Logic
         [HarmonyPatch(typeof(LDBTool), "Bind")]
         [HarmonyPriority(Priority.VeryHigh)]
         [HarmonyPrefix]
-        public static bool LDBTool_Bind() => ProjectOrbitalRing.LDBToolCacheEntry.Value;
+        //public static bool LDBTool_Bind() => ProjectOrbitalRing.LDBToolCacheEntry.Value;
+        public static bool LDBTool_Bind() => false;
 
         [HarmonyPatch(typeof(VFPreload), nameof(VFPreload.InvokeOnLoadWorkEnded))]
         [HarmonyAfter(LDBToolPlugin.MODGUID)]
@@ -21,7 +22,8 @@ namespace ProjectOrbitalRing.Patches.Logic
         {
             if (_finished) return;
 
-            if (!ProjectOrbitalRing.LDBToolCacheEntry.Value) return;
+            //if (!ProjectOrbitalRing.LDBToolCacheEntry.Value) return;
+            if (true) return;
 
             try
             {

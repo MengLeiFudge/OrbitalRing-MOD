@@ -3,12 +3,15 @@ using System;
 using UnityEngine.Rendering;
 using UnityEngine;
 using static ProjectOrbitalRing.ProjectOrbitalRing;
+using static UnityEngine.PostProcessing.MotionBlurComponent.FrameBlendingFilter;
+using System.Threading;
 
 namespace ProjectOrbitalRing.Patches.Logic.CurvatureLogistics
 {
     // 加了环的模型，环不能用其他材质，只能用船自己的材质才能显示，不知道为什么
     // 并且加了环后，喷口火焰特效的面对应贴图消失，变成纯白，不知道为什么，哪怕prefab的结构已经还原的和原版一样了
     // 当前只能把喷口火焰特效的面去掉，直接不显示
+
     internal class DeepSpaceLogisticShipRenderer
     {
         public static ShipRenderingData[] DeepSpaceShipsArr;
@@ -70,7 +73,7 @@ namespace ProjectOrbitalRing.Patches.Logic.CurvatureLogistics
         [HarmonyPatch(typeof(LogisticShipRenderer), MethodType.Constructor, new[] { typeof(GalacticTransport) })]
         public static void LogisticShipRenderer_Patch(LogisticShipRenderer __instance)
         {
-            if (DSPGame.IsMenuDemo || GameMain.mainPlayer == null) {
+            if (DSPGame.IsMenuDemo) {
                 return;
             }
             PrefabDesc prefabDesc = LDB.items.Select(6230).prefabDesc; //6230
@@ -168,6 +171,9 @@ namespace ProjectOrbitalRing.Patches.Logic.CurvatureLogistics
         [HarmonyPatch(typeof(LogisticShipRenderer), nameof(LogisticShipRenderer.Draw))]
         public static void LogisticShipRenderer_Draw_Patch(LogisticShipRenderer __instance)
         {
+            if (DSPGame.IsMenuDemo) {
+                return;
+            }
             if (DeepSpaceShipCount <= 0) {
                 return;
             }

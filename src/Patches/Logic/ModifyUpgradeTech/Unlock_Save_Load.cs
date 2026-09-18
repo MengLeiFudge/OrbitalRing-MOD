@@ -900,7 +900,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
 
                 NewGameCompletionLevel = r.ReadInt32();
                 for (int i = 1; i <= NewGameCompletionLevel; i++) {
-                    BecauseItIsThere(NewGameCompletionTech[NewGameCompletionLevel - 1]);
+                    BecauseItIsThere(NewGameCompletionTech[i - 1]);
                 }
 
                 ECMUpgradeLevel = r.ReadInt32();

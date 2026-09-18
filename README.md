@@ -68,7 +68,7 @@ Other modifications include but are not limited to:
 - Nuclear fission technology line
 - Several characteristics or hidden aspects of exoplanets
 - After completing the original version, a new series of technologies with higher requirements, known as the True Connection series, has been added
-- Manufacture production increase plugins for the manufacturing platform and rely on the global production increase plugins that take effect on a single platform globally through the star ring
+- Manufacture production increase plugins for the manufacturing platform and rely on the global production increase plugins that take effect on a single platform globally through the Orbital Ring
 - Other modifications that are difficult to list one by one
 
 <a href="https://ibb.co/LzcgvrCZ"><img src="https://i.ibb.co/TB70r1Hg/pet1-VZn-md.png" alt="pet1-VZn-md" border="0"></a>

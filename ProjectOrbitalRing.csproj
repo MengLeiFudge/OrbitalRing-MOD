@@ -135,6 +135,7 @@
     <Compile Include="src\Patches\Logic\BattleRelated\LocalPlasmaBanAntimatter.cs" />
     <Compile Include="src\Patches\Logic\BattleRelated\StopCircleAround.cs" />
     <Compile Include="src\Patches\Logic\Build\BuildingModelIndexRecord.cs" />
+    <Compile Include="src\Patches\Logic\Build\FixPowerNodeBg2048.cs" />
     <Compile Include="src\Patches\Logic\CurvatureLogistics\CurvatureLogistics.cs" />
     <Compile Include="src\Patches\Logic\CurvatureLogistics\DeepSpaceLogisticShipRenderer.cs" />
     <Compile Include="src\Patches\Logic\DamageDefinitionShield.cs" />

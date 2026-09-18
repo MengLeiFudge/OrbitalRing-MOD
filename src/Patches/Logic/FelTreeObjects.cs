@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using UnityEngine;
 using static ProjectOrbitalRing.Patches.Logic.TheMountainMovingProject;
 using static ProjectOrbitalRing.ProjectOrbitalRing;
+using static ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine.EnergyCalculate;
 
 namespace ProjectOrbitalRing.Patches.Logic
 {
@@ -92,6 +93,7 @@ namespace ProjectOrbitalRing.Patches.Logic
 
         public static void OnMine(ref PlanetFactory __instance, int id)
         {
+            LogError($"SecondLevelEnergy {SecondLevelEnergy}");
             //参数合法性校验
             if (__instance.vegePool[id].id == 0) { return; }
             int itemProtoID = 0;
