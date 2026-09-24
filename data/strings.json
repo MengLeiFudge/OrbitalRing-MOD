@@ -5056,6 +5056,11 @@
         "ENUS": "Plan "
     },
     {
+        "Name": "当前",
+        "ZHCN": "当前",
+        "ENUS": "Current "
+    },
+    {
         "Name": "共鸣阵列",
         "ZHCN": "共鸣阵列",
         "ENUS": "Resonance Array"

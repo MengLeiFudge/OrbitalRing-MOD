@@ -159,7 +159,7 @@ namespace ProjectOrbitalRing.Compatibility
             itemProto.isRaw = true;
 
             itemProto = LDB.items.Select(9486); //量子服务器群集
-            itemProto.Name = "量子服务器群集".Translate();
+            itemProto.Name = "量子服务器群集".TranslateFromJson();
             itemProto.RefreshTranslation();
 
             TechProto techProto = LDB.techs.Select(1918);
@@ -235,7 +235,7 @@ namespace ProjectOrbitalRing.Compatibility
                 if (RightStarPowRatioTextField == null) return;
                 Text RightStarPowRatioText = (Text)RightStarPowRatioTextField.GetValue(null);
 
-                RightStarPowRatioText.text = "引力系数".Translate();
+                RightStarPowRatioText.text = "引力系数".TranslateFromJson();
 
                 // 2. 获取字段引用
                 FieldInfo set2DysonButtonTextTransField = AccessTools.Field(targetType, "set2DysonButtonTextTrans");
@@ -245,15 +245,15 @@ namespace ProjectOrbitalRing.Compatibility
                 Transform set2DysonButtonTextTrans = (Transform)set2DysonButtonTextTransField.GetValue(null);
                 if (!GameMain.history.TechUnlocked(1802))
                 {
-                    set2DysonButtonTextTrans.GetComponent<Text>().text = "规划".Translate() + "???".Translate();
+                    set2DysonButtonTextTrans.GetComponent<Text>().text = "规划".TranslateFromJson() + "???".Translate();
                 }
                 else if (!GameMain.history.TechUnlocked(1952))
                 {
-                    set2DysonButtonTextTrans.GetComponent<Text>().text = "规划".Translate() + "共鸣阵列".Translate();
+                    set2DysonButtonTextTrans.GetComponent<Text>().text = "规划".TranslateFromJson() + "共鸣阵列".TranslateFromJson();
                 }
                 else
                 {
-                    set2DysonButtonTextTrans.GetComponent<Text>().text = "规划".Translate() + "数学率引擎".Translate();
+                    set2DysonButtonTextTrans.GetComponent<Text>().text = "规划".TranslateFromJson() + "数学率引擎".TranslateFromJson();
                 }
 
                 FieldInfo StarMegaStructureTypeField = AccessTools.Field(targetType, "StarMegaStructureType");
@@ -275,20 +275,20 @@ namespace ProjectOrbitalRing.Compatibility
                     if (!GameMain.history.TechUnlocked(1802))
                     {
                         RightDysonTitle.text = "???".Translate() + " " + star.displayName;
-                        set2DysonButtonTextTrans.GetComponent<Text>().text = "当前".Translate() + " " + "???".Translate();
+                        set2DysonButtonTextTrans.GetComponent<Text>().text = "当前".TranslateFromJson() + " " + "???".Translate();
                         RightMaxPowGenText.text = "???".Translate();
                     }
                     else if (!GameMain.history.TechUnlocked(1952))
                     {
-                        RightDysonTitle.text = "共鸣阵列".Translate() + " " + star.displayName;
-                        set2DysonButtonTextTrans.GetComponent<Text>().text = "当前".Translate() + " " + "共鸣阵列".Translate();
-                        RightMaxPowGenText.text = "引力共鸣".Translate();
+                        RightDysonTitle.text = "共鸣阵列".TranslateFromJson() + " " + star.displayName;
+                        set2DysonButtonTextTrans.GetComponent<Text>().text = "当前".TranslateFromJson() + " " + "共鸣阵列".TranslateFromJson();
+                        RightMaxPowGenText.text = "引力共鸣".TranslateFromJson();
                     }
                     else
                     {
-                        RightDysonTitle.text = "数学率引擎".Translate() + " " + star.displayName;
-                        set2DysonButtonTextTrans.GetComponent<Text>().text = "当前".Translate() + " " + "数学率引擎".Translate();
-                        RightMaxPowGenText.text = "现实重构".Translate();
+                        RightDysonTitle.text = "数学率引擎".TranslateFromJson() + " " + star.displayName;
+                        set2DysonButtonTextTrans.GetComponent<Text>().text = "当前".TranslateFromJson() + " " + "数学率引擎".TranslateFromJson();
+                        RightMaxPowGenText.text = "现实重构".TranslateFromJson();
                     }
                 }
             }

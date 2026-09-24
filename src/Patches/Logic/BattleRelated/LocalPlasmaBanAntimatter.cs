@@ -1,11 +1,5 @@
 ﻿using HarmonyLib;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+using ProjectOrbitalRing.Utils;
 
 namespace ProjectOrbitalRing.Patches.Logic.BattleRelated
 {
@@ -20,7 +14,7 @@ namespace ProjectOrbitalRing.Patches.Logic.BattleRelated
                 var type = __instance.prefabDesc.isTurret ? __instance.prefabDesc.turretAmmoType : __instance.AmmoType;
                 if (type == EAmmoType.Plasma || type == EAmmoType.LocalPlasma)
                 {
-                    __result = "轨道弹".Translate();
+                    __result = "轨道弹".TranslateFromJson();
                 }
             }
         }

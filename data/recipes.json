@@ -4442,6 +4442,32 @@
         "NonProductive": false
     },
     {
+        "ID": 162,
+        "Name": "黑雾引力透镜",
+        "Description": "",
+        "IconPath": "",
+        "Type": 12,
+        "GridIndex": 5809,
+        "Time": 360,
+        "Input": [
+            1209,
+            5201
+        ],
+        "InCounts": [
+            1,
+            12
+        ],
+        "Output": [
+            1211
+        ],
+        "OutCounts": [
+            1
+        ],
+        "Explicit": false,
+        "Handcraft": false,
+        "NonProductive": false
+    },
+    {
         "ID": 401,
         "Name": "铀矿处理",
         "Description": "R铀矿处理",
@@ -5477,7 +5503,7 @@
         "ID": 510,
         "Name": "气云超精炼",
         "Description": "R气云超精炼",
-        "IconPath": "",//Assets/texpack/R气云超精炼",
+        "IconPath": "", //Assets/texpack/R气云超精炼",
         //"IconTag": "rqycjl",
         "Type": 2,
         "GridIndex": 0,

@@ -65,7 +65,7 @@ namespace ProjectOrbitalRing
     {
         public const string MODGUID = "org.ProfessorCat305.OrbitalRing";
         public const string MODNAME = "OrbitalRing";
-        public const string VERSION = "1.0.17";
+        public const string VERSION = "1.0.18";
         public const string DEBUGVERSION = "";
 
 
@@ -187,7 +187,8 @@ namespace ProjectOrbitalRing
                     new TabData("精炼页面".TranslateFromJsonSpecial(), "Assets/texpack/矿物处理")),
                 TabSystem.RegisterTab($"{MODGUID}:{MODGUID}Tab2",
                     new TabData("化工页面".TranslateFromJsonSpecial(), "Assets/texpack/化工科技")),
-                TabSystem.RegisterTab($"{MODGUID}:{MODGUID}Tab3", new TabData("防御页面".TranslateFromJsonSpecial(), "Assets/texpack/防御")),
+                TabSystem.RegisterTab($"{MODGUID}:{MODGUID}Tab3",
+                    new TabData("防御页面".TranslateFromJsonSpecial(), "Assets/texpack/防御")),
             };
 
             RegisterStrings();

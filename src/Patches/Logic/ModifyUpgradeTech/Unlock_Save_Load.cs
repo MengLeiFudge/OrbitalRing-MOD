@@ -653,6 +653,8 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
                     break;
                 case 1960:
                     NewGameCompletionLevel = 4;
+                    MathematicalRateEngineRemoveSails();
+                    CalculateThirdLevelMathematicalRateEngine();
                     break;
             }
         }
@@ -669,7 +671,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
                     break;
                 case 1802:
                     techProto = LDB.techs.Select(techId);
-                    techProto.Name = "因为，山就在那里".Translate();
+                    techProto.Name = "因为，山就在那里".TranslateFromJson();
                     techProto.RefreshTranslation();
 
                     techProto = LDB.techs.Select(1952);
@@ -682,9 +684,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
                 case 1960:
                     techProto = LDB.techs.Select(1814);
                     techProto.IsHiddenTech = false;
-
-                    MathematicalRateEngineRemoveSails();
-                    CalculateThirdLevelMathematicalRateEngine();
+                    
                     break;
             }
         }
@@ -694,7 +694,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
             TechProto techProto;
             techProto = LDB.techs.Select(1802);
             techProto.IsHiddenTech = true;
-            techProto.Name = "为何攀登高峰".Translate();
+            techProto.Name = "为何攀登高峰".TranslateFromJson();
             techProto.RefreshTranslation();
 
             techProto = LDB.techs.Select(1952); // 穿透现实

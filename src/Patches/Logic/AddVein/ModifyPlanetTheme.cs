@@ -40,7 +40,7 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
 
                     case 17:
                         theme.DisplayName = "黑海盐滩";
-                        theme.displayName = theme.DisplayName.Translate();
+                        theme.displayName = theme.DisplayName.TranslateFromJson();
                         theme.WaterItemId = ProtoID.I原油;
                         theme.WaterHeight = 0.0f;
                         theme.Distribute = EThemeDistribute.Interstellar;

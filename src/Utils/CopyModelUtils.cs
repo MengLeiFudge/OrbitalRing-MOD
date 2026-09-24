@@ -120,6 +120,9 @@ namespace ProjectOrbitalRing.Utils
 
             prefabPath = "Assets/orbitalrings-models/entities/prefabs/deep-space-Cargo-Ship1-toab";
             RegisterNewBuildingModel(ProtoID.M太空运输船, ProtoID.M深空货舰, prefabPath);
+
+            //prefabPath = "Assets/orbitalrings-models/entities/prefabs/belt_test_J";
+            //RegisterNewBuildingModel(35, ProtoID.M轨道连接组件, prefabPath);
         }
 
         private static void RegisterNewBuildingModel(int oriModelId, int registerModelId, string prefabPath, Color? color = null)
@@ -127,6 +130,7 @@ namespace ProjectOrbitalRing.Utils
             ModelProto oriModel = LDB.models.Select(oriModelId);
             PrefabDesc desc = oriModel.prefabDesc;
 
+            
             var newMats = new List<Material>();
 
             foreach (Material[] lodMats in desc.lodMaterials) {
@@ -172,10 +176,10 @@ namespace ProjectOrbitalRing.Utils
                     AddMaterial803(ref newMats);
                     break;
 
-                // 明明模型加了环的不知道为什么环就是不出来，力竭了
-                //case ProtoID.M深空货舰:
-                //    AddMaterial819(ref newMats);
-                //    break;
+                    // 明明模型加了环的不知道为什么环就是不出来，力竭了,换成用船自己的贴图就出来了
+                    //case ProtoID.M深空货舰:
+                    //    AddMaterial819(ref newMats);
+                    //    break;
             }
 
             ModelProto registerModel = ProtoRegistry.RegisterModel(registerModelId, prefabPath, newMats.ToArray());
@@ -332,21 +336,21 @@ namespace ProjectOrbitalRing.Utils
             }
         }
 
-        private static void AddMaterial819(ref List<Material> newMats)
-        {
-            ModelProto oriModel = LDB.models.Select(117); // 轨道采集器
-            PrefabDesc desc = oriModel.prefabDesc;
-            int i = 0;
-            foreach (Material[] lodMats in desc.lodMaterials) {
-                if (lodMats == null) continue;
-                foreach (Material mat in lodMats) {
-                    if (mat == null) continue;
-                    var newMaterial = new Material(mat);
-                    newMats.Add(newMaterial);
-                    i++;
-                }
-            }
-        }
+        //private static void AddMaterial819(ref List<Material> newMats)
+        //{
+        //    ModelProto oriModel = LDB.models.Select(117); // 轨道采集器
+        //    PrefabDesc desc = oriModel.prefabDesc;
+        //    int i = 0;
+        //    foreach (Material[] lodMats in desc.lodMaterials) {
+        //        if (lodMats == null) continue;
+        //        foreach (Material mat in lodMats) {
+        //            if (mat == null) continue;
+        //            var newMaterial = new Material(mat);
+        //            newMats.Add(newMaterial);
+        //            i++;
+        //        }
+        //    }
+        //}
 
         //private static void AddAtmosphericCollectStation()
         //{

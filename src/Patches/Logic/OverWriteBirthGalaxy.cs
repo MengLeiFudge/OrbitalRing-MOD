@@ -47,21 +47,21 @@ namespace ProjectOrbitalRing.Patches.Logic
                 star.planets = new PlanetData[star.planetCount];
                 int info_seed = dotNet35Random2.Next();
                 int gen_seed = dotNet35Random2.Next();
-                star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, info_seed, gen_seed);
-                star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 1, 1, 0, gasGiant: false, info_seed, gen_seed);
+                star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, info_seed, gen_seed);
+                star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 1, 1, 0, gasGiant: false, info_seed, gen_seed);
             } else if (star.type == EStarType.NeutronStar) {
                 star.planetCount = 1;
                 star.planets = new PlanetData[star.planetCount];
                 int info_seed2 = dotNet35Random2.Next();
                 int gen_seed2 = dotNet35Random2.Next();
-                star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, info_seed2, gen_seed2);
+                star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, info_seed2, gen_seed2);
             } else if (star.type == EStarType.WhiteDwarf) {
                 if (num < 0.699999988079071) {
                     star.planetCount = 1;
                     star.planets = new PlanetData[star.planetCount];
                     int info_seed3 = dotNet35Random2.Next();
                     int gen_seed3 = dotNet35Random2.Next();
-                    star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, info_seed3, gen_seed3);
+                    star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, info_seed3, gen_seed3);
                 } else {
                     star.planetCount = 2;
                     star.planets = new PlanetData[star.planetCount];
@@ -70,17 +70,17 @@ namespace ProjectOrbitalRing.Patches.Logic
                     if (num2 < 0.30000001192092896) {
                         num8 = dotNet35Random2.Next();
                         num9 = dotNet35Random2.Next();
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, num8, num9);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: false, num8, num9);
                         num8 = dotNet35Random2.Next();
                         num9 = dotNet35Random2.Next();
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 0, 4, 2, gasGiant: false, num8, num9);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 0, 4, 2, gasGiant: false, num8, num9);
                     } else {
                         num8 = dotNet35Random2.Next();
                         num9 = dotNet35Random2.Next();
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 4, 1, gasGiant: true, num8, num9);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 4, 1, gasGiant: true, num8, num9);
                         num8 = dotNet35Random2.Next();
                         num9 = dotNet35Random2.Next();
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 1, 1, 1, gasGiant: false, num8, num9);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 1, 1, 1, gasGiant: false, num8, num9);
                     }
                 }
             } else if (star.type == EStarType.GiantStar) {
@@ -90,7 +90,7 @@ namespace ProjectOrbitalRing.Patches.Logic
                     int info_seed4 = dotNet35Random2.Next();
                     int gen_seed4 = dotNet35Random2.Next();
                     int orbitIndex = ((num3 > 0.5) ? 3 : 2);
-                    star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, orbitIndex, 1, gasGiant: false, info_seed4, gen_seed4);
+                    star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, orbitIndex, 1, gasGiant: false, info_seed4, gen_seed4);
                 } else if (num < 0.800000011920929) {
                     star.planetCount = 2;
                     star.planets = new PlanetData[star.planetCount];
@@ -100,18 +100,18 @@ namespace ProjectOrbitalRing.Patches.Logic
                         num10 = dotNet35Random2.Next();
                         num11 = dotNet35Random2.Next();
                         int orbitIndex2 = ((num3 > 0.5) ? 3 : 2);
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, orbitIndex2, 1, gasGiant: false, num10, num11);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, orbitIndex2, 1, gasGiant: false, num10, num11);
                         num10 = dotNet35Random2.Next();
                         num11 = dotNet35Random2.Next();
                         orbitIndex2 = ((num3 > 0.5) ? 4 : 3);
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 0, orbitIndex2, 2, gasGiant: false, num10, num11);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 0, orbitIndex2, 2, gasGiant: false, num10, num11);
                     } else {
                         num10 = dotNet35Random2.Next();
                         num11 = dotNet35Random2.Next();
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: true, num10, num11);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 3, 1, gasGiant: true, num10, num11);
                         num10 = dotNet35Random2.Next();
                         num11 = dotNet35Random2.Next();
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 1, 1, 1, gasGiant: false, num10, num11);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 1, 1, 1, gasGiant: false, num10, num11);
                     }
                 } else {
                     star.planetCount = 3;
@@ -122,37 +122,37 @@ namespace ProjectOrbitalRing.Patches.Logic
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
                         int orbitIndex3 = ((num3 > 0.5) ? 3 : 2);
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, orbitIndex3, 1, gasGiant: false, num12, num13);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, orbitIndex3, 1, gasGiant: false, num12, num13);
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
                         orbitIndex3 = ((num3 > 0.5) ? 4 : 3);
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 0, orbitIndex3, 2, gasGiant: false, num12, num13);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 0, orbitIndex3, 2, gasGiant: false, num12, num13);
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
                         orbitIndex3 = ((num3 > 0.5) ? 5 : 4);
-                        star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 2, 2, 1, 1, gasGiant: false, num12, num13);
+                        star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 2, 2, 1, 1, gasGiant: false, num12, num13);
                     } else if (num2 < 0.75) {
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
                         int orbitIndex4 = ((num3 > 0.5) ? 3 : 2);
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, orbitIndex4, 1, gasGiant: false, num12, num13);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, orbitIndex4, 1, gasGiant: false, num12, num13);
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 0, 4, 2, gasGiant: true, num12, num13);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 0, 4, 2, gasGiant: true, num12, num13);
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
-                        star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 2, 2, 1, 1, gasGiant: false, num12, num13);
+                        star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 2, 2, 1, 1, gasGiant: false, num12, num13);
                     } else {
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
                         int orbitIndex5 = ((num3 > 0.5) ? 4 : 3);
-                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, orbitIndex5, 1, gasGiant: true, num12, num13);
+                        star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, orbitIndex5, 1, gasGiant: true, num12, num13);
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
-                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 1, 1, 1, gasGiant: false, num12, num13);
+                        star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 1, 1, 1, gasGiant: false, num12, num13);
                         num12 = dotNet35Random2.Next();
                         num13 = dotNet35Random2.Next();
-                        star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 2, 1, 2, 2, gasGiant: false, num12, num13);
+                        star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 2, 1, 2, 2, gasGiant: false, num12, num13);
                     }
                 }
             } else if (star.index == 0) {
@@ -167,19 +167,19 @@ namespace ProjectOrbitalRing.Patches.Logic
                 int gen_seed7 = dotNet35Random2.Next();
                 info_seed6 = dotNet35Random2.Next();
                 gen_seed6 = dotNet35Random2.Next();
-                star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 0, 0, 1, 0, false, info_seed6, gen_seed6);
+                star.planets[0] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 0, 0, 1, 0, false, info_seed6, gen_seed6);
                 info_seed6 = dotNet35Random2.Next();
                 gen_seed6 = dotNet35Random2.Next();
-                star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 1, 0, 2, 1, false, info_seed6, gen_seed6);
+                star.planets[1] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 1, 0, 2, 1, false, info_seed6, gen_seed6);
                 info_seed6 = dotNet35Random2.Next();
                 gen_seed6 = dotNet35Random2.Next();
-                star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 2, 1, 1, 0, false, info_seed6, gen_seed6);
+                star.planets[2] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 2, 1, 1, 0, false, info_seed6, gen_seed6);
                 info_seed6 = dotNet35Random2.Next();
                 gen_seed6 = dotNet35Random2.Next();
-                star.planets[3] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 3, 0, 3, 4, true, info_seed6, gen_seed6);
+                star.planets[3] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 3, 0, 3, 4, true, info_seed6, gen_seed6);
                 info_seed6 = dotNet35Random2.Next();
                 gen_seed6 = dotNet35Random2.Next();
-                star.planets[4] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, 4, 0, 4, 0, false, info_seed6, gen_seed6);
+                star.planets[4] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, 4, 0, 4, 0, false, info_seed6, gen_seed6);
             } else {
                 Array.Clear(___pGas, 0, ___pGas.Length);
                 if (star.spectr == ESpectrType.M) {
@@ -366,7 +366,7 @@ namespace ProjectOrbitalRing.Patches.Logic
                         flag = false;
                     }
 
-                    star.planets[i] = PlanetGen.CreatePlanet(galaxy, star, gameDesc.savedThemeIds, i, num16, (num16 == 0) ? num17 : num15, (num16 == 0) ? num14 : num15, flag, info_seed5, gen_seed5);
+                    star.planets[i] = PlanetGen.CreatePlanet(galaxy, star, gameDesc, gameDesc.savedThemeIds, i, num16, (num16 == 0) ? num17 : num15, (num16 == 0) ? num14 : num15, flag, info_seed5, gen_seed5);
                     num17++;
                     if (flag) {
                         num16 = num14;

@@ -32,7 +32,7 @@ namespace ProjectOrbitalRing.Patches.UI.PlanetFocus
             ProjectOrbitalRing.PlanetFocusWindow = UIPlanetFocusWindow.CreateWindow();
 
             _planetFocusBtn = Util.CreateButton("星球特质".TranslateFromJson());
-            Util.NormalizeRectWithTopLeft(_planetFocusBtn, 5, -40, __instance.planetDetail.rectTrans);
+            Util.NormalizeRectWithTopLeft(_planetFocusBtn, 120, 33, __instance.planetDetail.rectTrans);
             _planetFocusBtn.onClick += _ => ProjectOrbitalRing.PlanetFocusWindow.OpenWindow();
         }
 

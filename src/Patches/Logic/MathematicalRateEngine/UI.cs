@@ -130,7 +130,7 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
 
                     if (curStar.type == EStarType.BlackHole)
                     {
-                        RightStarPowRatioText.text = "引力系数".Translate();
+                        RightStarPowRatioText.text = "引力系数".TranslateFromJson();
 
                         if (!GameMain.history.TechUnlocked(1802))
                         {
@@ -139,13 +139,13 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
                         }
                         else if (!GameMain.history.TechUnlocked(1952))
                         {
-                            RightDysonTitle.text = "共鸣阵列".Translate() + " " + star.displayName;
-                            RightMaxPowGenText.text = "引力共鸣".Translate();
+                            RightDysonTitle.text = "共鸣阵列".TranslateFromJson() + " " + star.displayName;
+                            RightMaxPowGenText.text = "引力共鸣".TranslateFromJson();
                         }
                         else
                         {
-                            RightDysonTitle.text = "数学率引擎".Translate() + " " + star.displayName;
-                            RightMaxPowGenText.text = "现实重构".Translate();
+                            RightDysonTitle.text = "数学率引擎".TranslateFromJson() + " " + star.displayName;
+                            RightMaxPowGenText.text = "现实重构".TranslateFromJson();
                         }
                     }
                 }
@@ -274,7 +274,7 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
                         }
                     }
                     // 数学率引擎因三阶时三阶前的层将无法再吸附游离帆，因此三阶前创建10层会弹窗警告
-                    UIMessageBox.Show("真通关三阶前粘贴蓝图标题".Translate(), "真通关三阶前粘贴蓝图描述".Translate(), "确定".Translate(), 3, null);
+                    UIMessageBox.Show("真通关三阶前粘贴蓝图标题".TranslateFromJson(), "真通关三阶前粘贴蓝图描述".TranslateFromJson(), "确定".TranslateFromJson(), 3, null);
                 }
 
             }
@@ -309,7 +309,7 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
                         }
                     }
                     // 数学率引擎因三阶时三阶前的层将无法再吸附游离帆，因此三阶前粘贴10层蓝图会弹窗警告
-                    UIMessageBox.Show("真通关三阶前粘贴蓝图标题".Translate(), "真通关三阶前粘贴蓝图描述".Translate(), "确定".Translate(), 3, null);
+                    UIMessageBox.Show("真通关三阶前粘贴蓝图标题".TranslateFromJson(), "真通关三阶前粘贴蓝图描述".TranslateFromJson(), "确定".TranslateFromJson(), 3, null);
                 }
 
             }

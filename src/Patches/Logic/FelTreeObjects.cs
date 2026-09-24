@@ -93,7 +93,20 @@ namespace ProjectOrbitalRing.Patches.Logic
 
         public static void OnMine(ref PlanetFactory __instance, int id)
         {
-            LogError($"SecondLevelEnergy {SecondLevelEnergy}");
+            //PlayerControlGizmo gizmo = GameMain.mainPlayer.gizmo;
+            //int y = gizmo.highlightedVeinModelIdCounts.Length;
+            //int k = 0;
+            //for (int i = 0; i < y; i++) {
+            //    LogError($"highlightedVeinModelIdCounts i {i}");
+            //    LogError($"highlightedVeinModelIdCounts modelIndex2 {gizmo.highlightedVeinModelIndexs[i]}");
+            //    LogError($"highlightedVeinModelIdCounts count {gizmo.highlightedVeinModelIdCounts[i]}");
+            //    k = gizmo.highlightedVeinModelIdsBySlot[i].Length;
+            //    for ( int j = 0; j < k; j++) {
+            //        LogError($"highlightedVeinModelIdCounts j {j}");
+            //        LogError($"highlightedVeinModelIdCounts highlightedVeinModelIdsBySlot {gizmo.highlightedVeinModelIdsBySlot[i][j]}");
+            //    }
+            //}
+
             //参数合法性校验
             if (__instance.vegePool[id].id == 0) { return; }
             int itemProtoID = 0;

@@ -2722,6 +2722,7 @@
         "PropertyOverrideItems": [],
         "PropertyItemCounts": []
     },
+    // 1509是黑雾引力透镜，2.0记得就换回来
     {
         "ID": 1509,
         "Name": "高效翘曲器",
@@ -8646,6 +8647,49 @@
         "LevelCoef1": 0,
         "LevelCoef2": 0,
         "IsLabTech": true,
+        "PreTechsMax": false,
+        "AddItems": [],
+        "AddItemCounts": [],
+        "PropertyOverrideItems": [],
+        "PropertyItemCounts": []
+    },
+    {
+        "ID": 1992,
+        "Name": "T黑雾引力透镜",
+        "IconPath": "Icons/Tech/1509",
+        "IconTag": "thyltj",
+        "Desc": "黑雾引力透镜描述",
+        "Conclusion": "黑雾引力透镜结果",
+        "IsHiddenTech": true,
+        "PreItem": [
+            5202
+        ],
+        "Position": [
+            76.0,
+            -8.0
+        ],
+        "PreTechs": [],
+        "PreTechsImplicit": [
+            1704
+        ],
+        "Items": [
+            5201
+        ],
+        "ItemPoints": [
+            120
+        ],
+        "HashNeeded": 30000,
+        "UnlockRecipes": [
+            162
+        ],
+        "UnlockFunctions": [],
+        "UnlockValues": [],
+        "Published": true,
+        "Level": 0,
+        "MaxLevel": 0,
+        "LevelCoef1": 0,
+        "LevelCoef2": 0,
+        "IsLabTech": false,
         "PreTechsMax": false,
         "AddItems": [],
         "AddItemCounts": [],

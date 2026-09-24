@@ -1,4 +1,5 @@
 ﻿using HarmonyLib;
+using ProjectOrbitalRing.Utils;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -112,7 +113,7 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
         public static void CalculateThirdLevelMathematicalRateEngine()
         {
             if (MathematicalRateEngineDysonSphere == null) {
-                UIMessageBox.Show("休谟记录异常".Translate(), "休谟记录异常文字".Translate(), "确定".Translate(), UIMessageBox.INFO);
+                UIMessageBox.Show("休谟记录异常".TranslateFromJson(), "休谟记录异常文字".TranslateFromJson(), "确定".TranslateFromJson(), UIMessageBox.INFO);
                 return;
             }
             SecondLevelEnergy = MathematicalRateEngineDysonSphere.energyGenCurrentTick - MathematicalRateEngineDysonSphere.energyReqCurrentTick;
@@ -121,7 +122,7 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
                 SecondLevelLayer[i] = MathematicalRateEngineDysonSphere.layersSorted[i].id;
             }
             if (SecondLevelEnergy <= 0) {
-                UIMessageBox.Show("休谟记录异常".Translate(), "休谟记录异常文字".Translate(), "确定".Translate(), UIMessageBox.INFO);
+                UIMessageBox.Show("休谟记录异常".TranslateFromJson(), "休谟记录异常文字".TranslateFromJson(), "确定".TranslateFromJson(), UIMessageBox.INFO);
             }
         }
 
@@ -178,6 +179,9 @@ namespace ProjectOrbitalRing.Patches.Logic.MathematicalRateEngine
                     return;
                 }
                 SecondLevelEnergy = r.ReadInt64();
+                if (SecondLevelEnergy <= 0) {
+                    UIMessageBox.Show("休谟记录异常".TranslateFromJson(), "休谟记录异常文字".TranslateFromJson(), "确定".TranslateFromJson(), UIMessageBox.INFO);
+                }
                 for (int i = 0; i < SecondLevelLayer.Length; i++) {
                     SecondLevelLayer[i] = r.ReadInt32();
                 }

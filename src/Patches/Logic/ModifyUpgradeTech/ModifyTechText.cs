@@ -113,7 +113,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech {
             string text = "";
             if (__instance.UnlockFunctions.Length > 0) {
                 if (__instance.UnlockFunctions[0] == 101) {
-                    text = text + "黑雾".Translate() + __instance.UnlockValues[0] + "级残骸物品掉落".Translate();
+                    text = text + "黑雾".TranslateFromJson() + __instance.UnlockValues[0] + "级残骸物品掉落".TranslateFromJson();
                     __result += text;
                 }
             }
