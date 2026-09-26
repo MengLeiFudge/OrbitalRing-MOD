@@ -25,7 +25,7 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
             //14 辉银矿 15
             //15 深层岩浆 16
             //16 铀 17
-            //17 黄铁 18
+            //17 硫磺 18
             //18 冰 19
             {
                 1, // 地中海

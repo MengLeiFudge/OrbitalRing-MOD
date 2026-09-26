@@ -8,6 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using CommonAPI;
+using static ProjectOrbitalRing.ProjectOrbitalRing;
 using HarmonyLib;
 using Newtonsoft.Json.Linq;
 using ProjectOrbitalRing.Patches.Logic.OrbitalRing;
@@ -51,7 +52,7 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         internal static void ModifyVeinData()
         {
             AddVeinProtos(
-                NewVein(15, "辉银矿脉", "I辉银矿", "Assets/texpack/铝矿脉", "yingkm", ProtoID.I石墨矿, 34, 3, 60),
+                NewVein(15, "辉银矿脉", "I辉银矿", "Assets/texpack/铝矿脉", "yingkm", ProtoID.I辉银矿, 34, 3, 60),
                 NewVein(16, "深层熔岩", "I深层熔岩", "Icons/Vein/oil-vein", "scrykm", ProtoID.I深层熔岩, 0, 6, 60),
                 NewVein(17, "铀矿脉", "I铀矿", "Assets/texpack/V铀矿脉", "youkm", ProtoID.I放射性矿物, 35, 2, 90),
                 NewVein(18, "硫磺矿脉", "I硫磺矿", "Assets/texpack/V黄铁矿脉", "liukm", ProtoID.I硫磺矿, 36, 1, 60),
@@ -157,13 +158,13 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         }
 
 
-        [HarmonyPatch(typeof(PlanetAlgorithm), nameof(PlanetAlgorithm.GenerateVeins))]
+        //[HarmonyPatch(typeof(PlanetAlgorithm), nameof(PlanetAlgorithm.GenerateVeins))]
         [HarmonyPatch(typeof(PlanetAlgorithm7), nameof(PlanetAlgorithm7.GenerateVeins))]
         [HarmonyPatch(typeof(PlanetAlgorithm11), nameof(PlanetAlgorithm11.GenerateVeins))]
         [HarmonyPatch(typeof(PlanetAlgorithm12), nameof(PlanetAlgorithm12.GenerateVeins))]
         [HarmonyPatch(typeof(PlanetAlgorithm13), nameof(PlanetAlgorithm13.GenerateVeins))]
         [HarmonyTranspiler]
-        public static IEnumerable<CodeInstruction> PlanetAlgorithm_GenerateVeins_ResizeVeinList_Transpiler(
+        public static IEnumerable<CodeInstruction> PlanetAlgorithm7_GenerateVeins_ResizeVeinList_Transpiler(
             IEnumerable<CodeInstruction> instructions)
         {
             var matcher = new CodeMatcher(instructions);
@@ -173,7 +174,22 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
             return matcher.InstructionEnumeration();
         }
 
-        
+        // PlanetAlgorithm的GenerateVeins在v0.10.35.29057加了原油在水下生成的逻辑，增加量正好是15%，IL检索15被顶掉导致新加矿物不生成了，需要跳过一次
+        [HarmonyPatch(typeof(PlanetAlgorithm), nameof(PlanetAlgorithm.GenerateVeins))]
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> PlanetAlgorithm_GenerateVeins_ResizeVeinList_Transpiler(
+            IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)15));
+            matcher.Advance(2);
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_I4_S, (sbyte)15));
+            matcher.SetOperandAndAdvance(20);
+
+            return matcher.InstructionEnumeration();
+        }
+
+
         //[HarmonyPatch(typeof(PlanetAlgorithm), nameof(PlanetAlgorithm.GenerateVeins))]
         //[HarmonyPatch(typeof(PlanetAlgorithm11), nameof(PlanetAlgorithm11.GenerateVeins))]
         //[HarmonyPatch(typeof(PlanetAlgorithm12), nameof(PlanetAlgorithm12.GenerateVeins))]
@@ -555,10 +571,6 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         }
 
         [HarmonyPatch(typeof(PlanetAlgorithm), nameof(PlanetAlgorithm.GenerateVeins))]
-        //[HarmonyPatch(typeof(PlanetAlgorithm7), nameof(PlanetAlgorithm7.GenerateVeins))]  PlanetAlgorithm7的OIL特判只有7处，其他都是8处
-        [HarmonyPatch(typeof(PlanetAlgorithm11), nameof(PlanetAlgorithm11.GenerateVeins))]
-        [HarmonyPatch(typeof(PlanetAlgorithm12), nameof(PlanetAlgorithm12.GenerateVeins))]
-        [HarmonyPatch(typeof(PlanetAlgorithm13), nameof(PlanetAlgorithm13.GenerateVeins))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> PlanetAlgorithm_GenerateVeins_Transpiler(IEnumerable<CodeInstruction> instructions)
         {
@@ -584,7 +596,145 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
                 }
             )));
 
+            // v0.10.35.29057加了原油在水下生成的逻辑，深层熔岩和冰层不走，所以跳过3处
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            matcher.Advance(2);
 
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            object index = matcher.Operand;
+            object jumpTo = matcher.Advance(2).Operand;
+            matcher.Advance(1);
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo));
+
+            // v0.10.35.29057加了原油在水下生成的逻辑，深层熔岩和冰层不走，所以跳过第2处
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            matcher.Advance(2);
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(2).Operand;
+
+            matcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Ceq));
+            matcher
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index)).InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index)).InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse_S, jumpTo));
+
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(2).Operand;
+            matcher.Advance(1);
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo));
+
+            // v0.10.35.29057加了原油在水下生成的逻辑，深层熔岩和冰层不走，所以跳过第3处
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            matcher.Advance(2);
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(2).Operand;
+
+            matcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Ceq));
+            matcher
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index)).InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index)).InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse_S, jumpTo));
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(2).Operand;
+
+            matcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Ceq));
+            matcher
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index)).InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index)).InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse_S, jumpTo));
+
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(2).Operand;
+            matcher.Advance(1);
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo));
+
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S),
+                new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(VeinData), nameof(VeinData.type))), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(3).Operand;
+            matcher.Advance(1);
+            matcher.InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(VeinData), nameof(VeinData.type))))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(VeinData), nameof(VeinData.type))))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19)).InsertAndAdvance(new CodeInstruction(OpCodes.Beq_S, jumpTo));
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S),
+                new CodeMatch(OpCodes.Ldfld, AccessTools.Field(typeof(VeinData), nameof(VeinData.type))), new CodeMatch(OpCodes.Ldc_I4_7));
+            index = matcher.Operand;
+            jumpTo = matcher.Advance(3).Operand;
+
+            matcher.SetInstructionAndAdvance(new CodeInstruction(OpCodes.Ceq));
+            matcher
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(VeinData), nameof(VeinData.type))))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)16))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldloc_S, index))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldfld, AccessTools.Field(typeof(VeinData), nameof(VeinData.type))))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ldc_I4_S, (sbyte)19))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Ceq)).InsertAndAdvance(new CodeInstruction(OpCodes.Or))
+               .InsertAndAdvance(new CodeInstruction(OpCodes.Brfalse_S, jumpTo));
+
+            return matcher.InstructionEnumeration();
+        }
+
+        //[HarmonyPatch(typeof(PlanetAlgorithm), nameof(PlanetAlgorithm.GenerateVeins))] PlanetAlgorithm的OIL特判多加了2处，抽出去单独一个patch
+        //[HarmonyPatch(typeof(PlanetAlgorithm7), nameof(PlanetAlgorithm7.GenerateVeins))]  PlanetAlgorithm7的OIL特判只有7处，其他都是8处
+        [HarmonyPatch(typeof(PlanetAlgorithm11), nameof(PlanetAlgorithm11.GenerateVeins))]
+        [HarmonyPatch(typeof(PlanetAlgorithm12), nameof(PlanetAlgorithm12.GenerateVeins))]
+        [HarmonyPatch(typeof(PlanetAlgorithm13), nameof(PlanetAlgorithm13.GenerateVeins))]
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> PlanetAlgorithm11_GenerateVeins_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Newarr));
+
+            object V_11 = matcher.Advance(1).Operand; // 变量索引
+            object V_12 = matcher.Advance(5).Operand; // 变量索引
+            object V_13 = matcher.Advance(4).Operand; // 变量索引
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Stloc_S), new CodeMatch(OpCodes.Ldc_I4_0));
+            matcher.Advance(1).InsertAndAdvance(new CodeInstruction(OpCodes.Ldarg_0),
+                new CodeInstruction(OpCodes.Ldloca_S, V_11),
+                new CodeInstruction(OpCodes.Ldloca_S, V_12),
+                new CodeInstruction(OpCodes.Ldloca_S, V_13),
+                new CodeInstruction(OpCodes.Call, AccessTools.Method(typeof(AddVeinPatches), nameof(AddBirthGalaxyRareVein),
+                new System.Type[] {
+                    typeof(PlanetAlgorithm),
+                    typeof(int[]).MakeByRefType(),    // ref int[]
+                    typeof(float[]).MakeByRefType(),  // ref float[]
+                    typeof(float[]).MakeByRefType()   // ref float[])));
+                }
+            )));
 
             matcher.MatchForward(false, new CodeMatch(OpCodes.Ldloc_S), new CodeMatch(OpCodes.Ldc_I4_7));
             object index = matcher.Operand;
