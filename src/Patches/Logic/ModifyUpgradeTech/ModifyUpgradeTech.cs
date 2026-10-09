@@ -649,6 +649,7 @@ namespace ProjectOrbitalRing.Patches.Logic.ModifyUpgradeTech
                 techProto = LDB.techs.Select(i);
                 techProto.Name = "残骸回收分析";
                 techProto.Desc = "T残骸回收分析";
+                techProto.Conclusion = "T残骸回收分析";
                 techProto.RefreshTranslation();
                 techProto.IconPath = "Assets/texpack/回收科技";
 

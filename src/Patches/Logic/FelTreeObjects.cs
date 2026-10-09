@@ -100,11 +100,11 @@ namespace ProjectOrbitalRing.Patches.Logic
             //    LogError($"highlightedVeinModelIdCounts i {i}");
             //    LogError($"highlightedVeinModelIdCounts modelIndex2 {gizmo.highlightedVeinModelIndexs[i]}");
             //    LogError($"highlightedVeinModelIdCounts count {gizmo.highlightedVeinModelIdCounts[i]}");
-            //    k = gizmo.highlightedVeinModelIdsBySlot[i].Length;
-            //    for ( int j = 0; j < k; j++) {
-            //        LogError($"highlightedVeinModelIdCounts j {j}");
-            //        LogError($"highlightedVeinModelIdCounts highlightedVeinModelIdsBySlot {gizmo.highlightedVeinModelIdsBySlot[i][j]}");
-            //    }
+            //    //k = gizmo.highlightedVeinModelIdsBySlot[i].Length;
+            //    //for (int j = 0; j < k; j++) {
+            //    //    LogError($"highlightedVeinModelIdCounts j {j}");
+            //    //    LogError($"highlightedVeinModelIdCounts highlightedVeinModelIdsBySlot {gizmo.highlightedVeinModelIdsBySlot[i][j]}");
+            //    //}
             //}
 
             //参数合法性校验

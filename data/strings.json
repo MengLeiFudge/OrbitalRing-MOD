@@ -630,9 +630,14 @@
         "ENUS": "Through the action of magnetic field, prism and lens group, laser can be efficiently generated, and the improved laser generator is more stable and has better performance."
     },
     {
+        "Name": "光栅激发器",
+        "ZHCN": "光栅激发器",
+        "ENUS": "Grating Laser Generator"
+    },
+    {
         "Name": "R光栅激发器",
         "ZHCN": "利用光栅石可以制作大功率激发器的特性，制造激光发生器。",
-        "ENUS": "Tar Fuel Rod"
+        "ENUS": "The grating stone can be used to make high-power exciter and laser generator."
     },
     {
         "Name": "辉银矿",
@@ -1971,12 +1976,12 @@
     {
         "Name": "T电气矩阵描述",
         "ZHCN": "电磁转化与电路控制代表了文明进入电气时代，电气的发展是现代文明的基础",
-        "ENUS": "electrical Matrix"
+        "ENUS": "Electromagnetic conversion and circuit control represent the entry of civilization into the electrical era, and the development of electricity is the foundation of modern civilization."
     },
     {
         "Name": "电气矩阵",
         "ZHCN": "电气矩阵",
-        "ENUS": "electrical Matrix"
+        "ENUS": "Electrical Matrix"
     },
     {
         "Name": "I电气矩阵",
@@ -1991,7 +1996,7 @@
     {
         "Name": "化工矩阵",
         "ZHCN": "化工矩阵",
-        "ENUS": "chemical industry Matrix"
+        "ENUS": "Chemical industry Matrix"
     },
     {
         "Name": "I化工矩阵",
@@ -2036,7 +2041,7 @@
     {
         "Name": "信息矩阵",
         "ZHCN": "信息矩阵",
-        "ENUS": "information Matrix"
+        "ENUS": "Information Matrix"
     },
     {
         "Name": "I信息矩阵",
@@ -2579,6 +2584,11 @@
         "ENUS": "Dark Fog is usually extracted directly from the deep mantle to synthesize energy fragments. It is not impossible to use surface magma, but more impurities in surface magma will affect its efficiency."
     },
     {
+        "Name": "粒子打印",
+        "ZHCN": "粒子打印",
+        "ENUS": "Particle printing"
+    },
+    {
         "Name": "太空船坞",
         "ZHCN": "太空船坞",
         "ENUS": "Space Dock"
@@ -2626,7 +2636,7 @@
     {
         "Name": "延迟焦化",
         "ZHCN": "延迟焦化",
-        "ENUS": "delayed coking"
+        "ENUS": "Delayed coking"
     },
     {
         "Name": "R延迟焦化",
@@ -3711,6 +3721,11 @@
         "ENUS": "Has twice the capacity of a Storage Mk.I. Materials requires twice too."
     },
     {
+        "Name": "全息信标",
+        "ZHCN": "全息信标",
+        "ENUS": "Holographic beacon"
+    },
+    {
         "Name": "等离子熔炉",
         "ZHCN": "等离子熔炉",
         "ENUS": "Plasma Smelter"
@@ -3736,9 +3751,9 @@
         "ENUS": "You have unlocked the more advanced smelter ━━ <color=\"#FD965ECC\">Plasma Smelter</color>, which is twice as fast as an Arc Smelter!"
     },
     {
-        "Name": "I石墨矿",
-        "ZHCN": "石墨矿是碳元素的结晶矿物之一，具有润滑性、化学稳定性、耐高温、导电、特殊的导热性和可塑性、涂敷性等优良性能，其应用领域十分广泛。",
-        "ENUS": "Graphite ore is one of the crystalline minerals of carbon element, which has excellent properties such as lubricity, chemical stability, high temperature resistance, conductivity, special thermal conductivity and plasticity, coating properties, etc. Its application fields are very wide."
+        "Name": "石墨",
+        "ZHCN": "石墨",
+        "ENUS": "Graphite"
     },
     {
         "Name": "I重油",
@@ -3852,6 +3867,11 @@
         "ENUS": "The frigate is one of the smallest and fastest ships in the COSMO space fleet sequence, capable of assisting Icarus in space operations. The low-cost unmanned standard frigate can suppress opponents by quantity.\nThe default storage capacity limit in the Orbital Ring shared space is <color=\"#FD965ECC\">100</color>"
     },
     {
+        "Name": "碳基裂解",
+        "ZHCN": "碳基裂解",
+        "ENUS": "Carbon based cracking"
+    },
+    {
         "Name": "R碳基裂解",
         "ZHCN": "将碳基生物质用绿色的裂解射线扫过，将其裂解为长链烷烃,环烷烃,芳香烃等复杂烃类化合物，即：重油，或许有人说植物的命也是命，使用这种专门针对生命的武器是种不正当的罪行。\r\n\r\n而我们称之为高效。",
         "ENUS": "Scanning carbon based biomass with green pyrolysis radiation to break it down into complex hydrocarbon compounds such as long-chain alkanes, cycloalkanes, and aromatic hydrocarbons, namely heavy oil. Perhaps some people say that the life of plants is also life, and using this weapon specifically targeting life is an illegitimate crime.\r\n\r\nAnd we call it efficiency."
@@ -3916,6 +3936,11 @@
         "Name": "T高级原油处理",
         "ZHCN": "石油作为工业的“血液”，其产量直接决定了诸多工业的产能，每年依旧有数不清的经费用于如何提高石油的利用率，高级原油处理便是其中一个成果，更高的轻油产量。",
         "ENUS": "Oil, as the \"blood\" of industry, directly determines the production capacity of many industries. Every year, countless funds are spent on improving the utilization rate of oil, and advanced crude oil processing is one of the achievements, resulting in higher light oil production."
+    },
+    {
+        "Name": "高级原油处理",
+        "ZHCN": "高级原油处理",
+        "ENUS": "Advanced crude oil treatment"
     },
     {
         "Name": "R高级原油处理",

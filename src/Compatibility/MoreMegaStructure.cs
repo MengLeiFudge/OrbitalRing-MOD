@@ -69,6 +69,9 @@ namespace ProjectOrbitalRing.Compatibility
             HarmonyPatch.Patch(AccessTools.Method(assembly.GetType("MoreMegaStructure.StarAssembly"), "IntoOtherSave"), null, null,
                 new HarmonyMethod(typeof(MoreMegaStructure), nameof(IntoOtherSave_Transpiler)));
 
+            HarmonyPatch.Patch(AccessTools.Method(assembly.GetType("MoreMegaStructure.MMSProtos"), "AddNewItems"), null, null,
+                new HarmonyMethod(typeof(MoreMegaStructure), nameof(AddNewItems_Transpiler)));
+
             HashGenDivisor = AccessTools.Field(assembly.GetType("MoreMegaStructure.MoreMegaStructure"), "HashGenDivisor");
             HashGenDivisor.SetValue(null, 200000000L);
 
@@ -164,6 +167,13 @@ namespace ProjectOrbitalRing.Compatibility
 
             TechProto techProto = LDB.techs.Select(1918);
             techProto.Position = new Vector2(80, 8);
+
+            techProto = LDB.techs.Select(1963);
+            techProto.UnlockRecipes = new int[] {
+                120,
+                160,
+                352
+            };
 
             _finished = true;
         }
@@ -442,6 +452,17 @@ namespace ProjectOrbitalRing.Compatibility
 
             matcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_I4, 100000));
             matcher.SetOperandAndAdvance(500000);
+
+            return matcher.InstructionEnumeration();
+        }
+
+        public static IEnumerable<CodeInstruction> AddNewItems_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_I4, 1607));
+
+            matcher.SetOperandAndAdvance(1963);
 
             return matcher.InstructionEnumeration();
         }

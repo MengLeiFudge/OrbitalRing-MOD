@@ -2,9 +2,6 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection.Emit;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using static ProjectOrbitalRing.Patches.Logic.OrbitalRing.EquatorRing;
 
@@ -58,6 +55,39 @@ namespace ProjectOrbitalRing.Patches.Logic.OrbitalRing
         [HarmonyPatch(typeof(PlanetATField), nameof(PlanetATField.DoRayTests))]
         [HarmonyTranspiler]
         public static IEnumerable<CodeInstruction> DoRayTests_Transpiler(IEnumerable<CodeInstruction> instructions)
+        {
+            var matcher = new CodeMatcher(instructions);
+
+            // 匹配 ldc.r4 指令
+            matcher.MatchForward(false, new CodeMatch(OpCodes.Ldc_R4), new CodeMatch(OpCodes.Add));
+            // 将操作数从 60.8 修改为 90，护盾最大高度从60.8提高到100，以覆盖星环
+            matcher.SetAndAdvance(OpCodes.Ldc_R4, 100.8f);
+
+            return matcher.InstructionEnumeration();
+        }
+
+        [HarmonyPatch(typeof(SkillSystem), nameof(SkillSystem.DeterminePlanetATFieldRaytestInStar),
+             new Type[]
+             {
+                 typeof(int), typeof(ERayTestSkillType), typeof(int), typeof(VectorLF3),
+                 typeof(VectorLF3), typeof(int),
+             }, new ArgumentType[]
+             {
+                 ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref,
+                 ArgumentType.Ref, ArgumentType.Normal,
+             })]
+        [HarmonyPatch(typeof(SkillSystem), nameof(SkillSystem.DeterminePlanetATFieldRaytestInStar),
+             new Type[]
+             {
+                 typeof(int), typeof(ERayTestSkillType), typeof(int), typeof(VectorLF3),
+                 typeof(Vector3), typeof(int),
+             }, new ArgumentType[]
+             {
+                 ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Normal, ArgumentType.Ref,
+                 ArgumentType.Ref, ArgumentType.Normal,
+             })]
+        [HarmonyTranspiler]
+        public static IEnumerable<CodeInstruction> DeterminePlanetATFieldRaytestInStar_Transpiler(IEnumerable<CodeInstruction> instructions)
         {
             var matcher = new CodeMatcher(instructions);
 

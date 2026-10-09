@@ -3,15 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Runtime.Remoting;
-using System.Security.Cryptography;
-using System.Text;
-using System.Text.RegularExpressions;
-using CommonAPI;
 using static ProjectOrbitalRing.ProjectOrbitalRing;
 using HarmonyLib;
-using Newtonsoft.Json.Linq;
-using ProjectOrbitalRing.Patches.Logic.OrbitalRing;
 using ProjectOrbitalRing.Utils;
 using UnityEngine;
 
@@ -29,12 +22,12 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         {
             new Color(0.538f, 0.538f, 0.538f), // Default
             new Color(0.288f, 0.587f, 0.858f), // 铁 1
-            new Color(1.000f, 0.490f, 0.307f), // 铜
-            new Color(0.214f, 0.745f, 0.531f), // 硅
-            new Color(1.000f, 1.000f, 1.000f), // 钛
-            new Color(0.483f, 0.461f, 0.444f), // 石
-            new Color(0.113f, 0.130f, 0.140f), // 煤
-            new Color(0.000f, 0.000f, 0.000f), // 油
+            new Color(1.000f, 0.490f, 0.307f), // 铜 2
+            new Color(0.214f, 0.745f, 0.531f), // 硅 3
+            new Color(1.000f, 1.000f, 1.000f), // 钛 4
+            new Color(0.483f, 0.461f, 0.444f), // 石 5
+            new Color(0.113f, 0.130f, 0.140f), // 煤 6
+            new Color(0.000f, 0.000f, 0.000f), // 油 7
             new Color(1.000f, 1.000f, 1.000f), // 可燃冰 8
             new Color(0.489f, 0.601f, 0.745f), // 金伯利 9
             new Color(0.066f, 0.290f, 0.160f), // 莫桑石 10

@@ -29,8 +29,7 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         {
             if (mats == null) return false;
 
-            foreach (Material mat in mats)
-            {
+            foreach (Material mat in mats) {
                 if (mat == null) continue;
 
                 ReplaceShaderIfAvailable(mat);
@@ -46,12 +45,10 @@ namespace ProjectOrbitalRing.Patches.Logic.AddVein
         {
             if (mats == null) return false;
 
-            foreach (Material[] matarray in mats)
-            {
+            foreach (Material[] matarray in mats) {
                 if (matarray == null) continue;
 
-                foreach (Material mat in matarray)
-                {
+                foreach (Material mat in matarray) {
                     if (mat == null) continue;
 
                     ReplaceShaderIfAvailable(mat);

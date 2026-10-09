@@ -4467,6 +4467,7 @@
         "Handcraft": false,
         "NonProductive": false
     },
+    // 352-362巨构占用
     {
         "ID": 401,
         "Name": "铀矿处理",
@@ -5096,7 +5097,7 @@
             2,
             2
         ],
-        "Explicit": false,
+        "Explicit": true,
         "Handcraft": true,
         "NonProductive": false
     },
@@ -6144,6 +6145,7 @@
         "Handcraft": false,
         "NonProductive": true
     },
+    // 551-562被巨构占用
     {
         "ID": 624,
         "Name": "加氢脱硫",
@@ -8633,7 +8635,7 @@
         "ID": 836,
         "Name": "水冷伺服器",
         "Description": "R水冷伺服器",
-        "IconPath": "Assets/texpack/R水冷伺服器",
+        "IconPath": "Assets/texpack/R水冷伺服器2",
         "IconTag": "rslsfq",
         "Type": 4,
         "GridIndex": 2803,

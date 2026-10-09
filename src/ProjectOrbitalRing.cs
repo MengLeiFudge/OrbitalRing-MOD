@@ -65,7 +65,7 @@ namespace ProjectOrbitalRing
     {
         public const string MODGUID = "org.ProfessorCat305.OrbitalRing";
         public const string MODNAME = "OrbitalRing";
-        public const string VERSION = "1.0.19";
+        public const string VERSION = "1.0.20";
         public const string DEBUGVERSION = "";
 
 
@@ -147,6 +147,11 @@ namespace ProjectOrbitalRing
             Shader stoneVeinShader =
                 resources_models.bundle.LoadAsset<Shader>("Assets/genesis-models/shaders/PBR Standard Vein Stone COLOR.shader");
             SwapShaderPatches.AddSwapShaderMapping("VF Shaders/Forward/PBR Standard Vein Stone", stoneVeinShader);
+
+
+            //Shader stoneVeinShader =
+            //    orbital_building_models.bundle.LoadAsset<Shader>("Assets/orbitalrings-models/entities/prefabs/PBR Standard Vein Stone COLOR.shader");
+            //SwapShaderPatches.AddSwapShaderMapping("VF Shaders/Forward/PBR Standard Vein Stone", stoneVeinShader);
 
             Shader metalVeinShader =
                 resources_models.bundle.LoadAsset<Shader>("Assets/genesis-models/shaders/PBR Standard Vein Metal COLOR.shader");
